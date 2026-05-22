@@ -1,0 +1,1977 @@
+% paper.tex - Updated Research Template with new title page
+\documentclass{research}
+\usepackage{float}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+\else
+  \usepackage{fontspec}
+\fi
+\usepackage{textcomp}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+
+\renewcommand{\contentsname}{Table of Contents}
+\singlespacing
+\sloppy
+
+\newcommand{\paperfigure}[3]{%
+  \begin{figure}[H]
+  \centering
+  \IfFileExists{images/#1}{%
+    \includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{#1}%
+  }{%
+    \fbox{\begin{minipage}[c][2in][c]{0.9\textwidth}\centering Missing image: \texttt{#1}\end{minipage}}%
+  }%
+  \caption{#2}
+  \label{#3}
+  \end{figure}
+}
+
+\newcommand{\placeholder}[1]{\textbf{[To be supplied: #1]}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+% Title Page Info
+\title{BYANAGA: Performance Evaluation of a Smart Tourism Management Platform for Improved Tourist Experience and Services}
+\submission{In Partial Fulfillment of the Requirement for the Degree Bachelor of Science in Information System}
+\researchyear{2027}
+
+\begin{document}
+\pagestyle{empty}
+\thispagestyle{empty}
+\begin{singlespacing}
+\begin{center}
+  \vspace*{0in}
+  {\Huge\bfseries BYANAGA: Performance Evaluation of a Smart Tourism Management Platform for Improved Tourist Experience and Services\par}
+  \vspace{1in}
+  A Capstone Project\\
+  Presented to the Faculty of the\\
+  College of Computer Studies\\
+  Naga College Foundation, Inc.\\
+  Naga City\\
+  \vspace{1in}
+  In Partial Fulfillment of\\
+  The Requirements for the Degree\\
+  Bachelor of Science in Information System\\
+  \vspace{0.5in}
+  Una, Justin, E.\\
+  Borela, Rene Richard S.\\
+  Mira, Ace Ben C.\\
+  Moreno, Jerome Ford G.\\
+  \vfill
+  2027
+\end{center}
+\end{singlespacing}
+\clearpage
+
+\thispagestyle{fancy}
+\begin{center}
+  \vspace*{0.45in}
+  NAGA COLLEGE FOUNDATION, INC.\\
+  College of Computer Studies\\
+  City of Naga\\[1.5em]
+
+  {\bfseries APPROVAL SHEET}
+\end{center}
+
+\vspace{1.25em}
+
+\begin{center}
+\begin{minipage}{0.90\textwidth}
+\setlength{\parindent}{0.35in}
+This thesis project of \textbf{Una, Justin, E., Borela, Rene Richard S., Mira, Ace Ben C., and Moreno, Jerome Ford G.} entitled \textbf{``BYANAGA: Performance Evaluation of a Smart Tourism Management Platform for Improved Tourist Experience and Services''} was prepared and submitted in partial fulfillment of the requirements for the degree of Bachelor of Science in Information System. It has been examined and is recommended for acceptance and approval for oral examination.
+\end{minipage}
+\end{center}
+
+\vspace{2.5em}
+
+\begin{center}
+  {\bfseries JOHN RYAN LORCA}\\
+  Adviser\\[3.5em]
+
+  {\bfseries THESIS COMMITTEE:}\\[2em]
+
+  {\bfseries FRITZGERALD ENRIC IMPERIAL}\\
+  Chairman\\[2.5em]
+
+  \begin{tabular}{cc}
+    {\bfseries JUNICE ILAGAN} & {\bfseries JOHN ROY GALVEZ}\\
+    Panel Member & Panel Member
+  \end{tabular}\\[2.5em]
+
+  {\bfseries LIELA B. GARDOSE}\\
+  Panel Secretary\\[3.5em]
+
+  {\bfseries PANEL OF EXAMINERS}\\[2.5em]
+
+  Approved by the Committee on Oral Examinations on May, 2026.
+\end{center}
+
+\vfill
+\clearpage
+
+\thispagestyle{empty}
+\begin{center}
+  {\bfseries NAGA COLLEGE FOUNDATION, INC.}\\[0.5em]
+  {\bfseries College of Computer Studies}\\[0.5em]
+  {\bfseries City of Naga}\\[2em]
+  {\bfseries SECRETARY'S CERTIFICATION}
+\end{center}
+
+\vspace{1.5em}
+
+\noindent
+This thesis project of \textbf{Una, Justin, E., Borela, Rene Richard S., Mira, Ace Ben C., and Moreno, Jerome Ford G.} entitled \textbf{``BYANAGA: Performance Evaluation of a Smart Tourism Management Platform for Improved Tourist Experience and Services''} was prepared and submitted in partial fulfillment of the requirements for the degree of Bachelor of Science in Information System. It has been examined and is recommended for acceptance and approval for oral examination.
+
+\vspace{5em}
+
+\begin{center}
+  \textbf{LIELA B. GARDOSE}\\
+  Secretary
+\end{center}
+
+\vfill
+\clearpage
+
+\thispagestyle{empty}
+\begin{center}
+  {\bfseries NAGA COLLEGE FOUNDATION, INC.}\\[0.5em]
+  {\bfseries College of Computer Studies}\\[0.5em]
+  {\bfseries City of Naga}\\[2em]
+  {\bfseries EDITOR'S CERTIFICATION}
+\end{center}
+
+\vspace{1.5em}
+
+\noindent
+This thesis project of \textbf{Una, Justin, E., Borela, Rene Richard S., Mira, Ace Ben C., and Moreno, Jerome Ford G.} entitled \textbf{``BYANAGA: Performance Evaluation of a Smart Tourism Management Platform for Improved Tourist Experience and Services''} was prepared and submitted in partial fulfillment of the requirements for the degree of Bachelor of Science in Information System. It has been examined and is recommended for acceptance and approval for oral examination.
+
+\vspace{5em}
+
+\begin{center}
+  \textbf{FULLNAME B. LASTNAME}\\
+  Editor
+\end{center}
+
+\vfill
+\clearpage
+
+\pagenumbering{roman}
+\pagestyle{fancy}
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\noindent\textbf{Title:} BYANAGA: Performance Evaluation of a Smart Tourism Management Platform for Improved Tourist Experience and Services
+
+\noindent\textbf{Researchers:} Una, Justin, E., Borela, Rene Richard S., Mira, Ace Ben C., and Moreno, Jerome Ford G.
+
+\noindent\textbf{Institution:} College of Computer Studies, Naga College Foundation, Inc.
+
+This study presents BYANAGA, a web-based Smart Tourism Destination Management Platform developed to address the operational gaps in Naga City's tourism ecosystem. The study responds to three documented problems: the absence of a centralized platform for tourists to discover available vouchers, discounts, and promotions from local establishments; the lack of a structured digital promotion channel for establishment owners; and the fragmented coordination between the Naga City Tourism Office and the private tourism sector. Grounded in the Smart Tourism Information Systems Framework, Digital Transformation and Platform Ecosystems Theory, and the Extended Unified Theory of Acceptance and Use of Technology 2 (UTAUT2), the platform integrates four role-differentiated interfaces — Tourist, Establishment Owner, Tourism Officer, and Administrator — within a centralized relational database. Core components include a tourist-facing establishment and voucher discovery interface, an establishment owner management portal with voucher submission and revision workflows, a tourism officer governance panel for registration approval and report generation, and an administrator dashboard for system-wide oversight. The platform is evaluated using the System Usability Scale (SUS) and User Acceptance Testing (UAT) involving thirty (30) tourists, five (5) establishment owners, and one (1) tourism officer as respondents.
+
+\noindent\textbf{Keywords:} smart tourism platform, voucher management system, tourist-establishment connectivity, local government digitalization, Naga City, web-based system, usability evaluation 
+
+\clearpage
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+\pagenumbering{arabic}
+
+%-----------------------------
+% Chapter 1
+%-----------------------------
+\chapter{Introduction}
+
+\section{Background of the Study}
+
+Tourism is one of the important contributors to economic growth and community development in many countries, including the Philippines. With the rapid advancement of technology, tourism industries are now shifting from traditional systems into digital and smart tourism platforms that provide faster, more organized, and more convenient services for tourists and tourism stakeholders. Smart tourism uses information and communication technologies (ICT), cloud systems, mobile applications, artificial intelligence, and real-time data services to improve tourist experiences, tourism management, and destination sustainability \cite{galvao2024}. According to Yin et al.\ \cite{yin2022}, Tourism Cloud Management Systems (TCMS) enhance tourist experiences and provide access to shared destination data, enabling tourists to discover local attractions, read peer reviews, and participate in local festivities through smart tourism models. These digital innovations allow tourists to access information easily, book services online, navigate destinations efficiently, and receive real-time updates during their travels \cite{qi2021}.
+
+Globally, tourism organizations and researchers emphasize the importance of digital transformation in tourism management. Smart tourism systems are considered effective tools for improving visitor satisfaction, increasing operational efficiency, and supporting sustainable tourism development \cite{tavitiyaman2021}. Studies also show that responsive and user-friendly tourism platforms can positively influence tourists' behavioral intentions, engagement, and revisit decisions \cite{park2021}. Furthermore, technologies such as AI-powered recommendation systems, cloud-based tourism platforms, and predictive analytics can help tourism organizations deliver personalized services and improve destination competitiveness \cite{vavpotic2021}. Sampaio et al.\ \cite{sampaio2025} further noted that digital twin and smart city technologies are increasingly being applied in tourism management to improve destination planning and visitor experience, although usability and system evaluation remain key research gaps.
+
+In the Philippines, the government continues to promote digitalization through programs and policies related to smart cities and digital tourism. The Department of Information and Communications Technology (DICT) introduced the Digital Cities 2025 initiative to strengthen digital infrastructure and innovation across the country \cite{dict2020}. The Department of Tourism (DOT) also supports sustainable and technology-driven tourism development to improve tourism services and destination management \cite{dot2022}. Several local government units are now integrating smart tourism concepts into their tourism programs to improve tourist engagement and economic opportunities \cite{dost2024}.
+
+Naga City, recognized as one of the emerging smart cities in the Philippines, continues to strengthen its digital transformation initiatives through technology-based programs and smart governance projects \cite{naga2025}. However, despite the growing adoption of digital tourism systems in other regions, there is still a need to evaluate how tourism platforms can improve tourist experiences, accessibility, responsiveness, and sustainability within local destinations. Challenges such as system usability, service reliability, information accessibility, and platform responsiveness remain important concerns that need to be addressed \cite{ramos2024}.
+
+This study focuses on the development and evaluation of a smart tourism platform designed to improve tourism services and visitor experiences. Thestudy aims to examine how digital tourism technologies, platform responsiveness, usability, and smart service integration can contribute to tourism management and sustainable tourism development. By integrating modern tourism technologies and user-centered design approaches, the proposed system seeks to provide a more efficient, accessible, and engaging tourism experience for tourists and tourism stakeholders \cite{gretzel2023}.
+
+\section{Review of Related Literature}
+
+\subsection{Digital Voucher and Promotional Management Systems in Tourism}
+
+The use of digital voucher management and promotional mechanisms has proven vital for creating connections between establishments and tourists by providing efficient promotional mechanics in today's tourism systems. Albu proves that real-time visibility of available offers through centralized digital platforms reduces transactional friction between the service provider and consumer by streamlining the discovery of promotions \cite{albu2025}. Tourists who access destination promotions via digital platforms display considerably higher engagement levels compared to tourists using other non-centralized digital or traditional methods. Kim et al. show that smart tourism mechanisms such as the use of ICT, mobile and cloud-based applications increase tourist satisfaction due to the provision of real-time and organized promotion mechanisms, where tourists using centralized platforms displaying promotions from various establishments engage more than those accessing promotions from a single establishment \cite{kim2021}.
+
+The issue of voucher governance design is another constant among the recent works. According to Ahn, Kim, and Lee, multi-stakeholder platforms where the process involves an approval stage, meaning that the promotional vouchers are checked by a tourism office before their publication on tourist-oriented websites, lead to better content quality and increased tourist confidence compared to freely accessible directory services \cite{ahn2022}. In his work, Ahn, Kim, and Lee distinguish officer-based approval as the main difference between successful destination platforms with well-performed promotions and inconsistent promotion platforms \cite{ahn2022}. Albu proves that real-time visibility of the voucher's status, which allows for checking whether the submitted voucher is still pending, undergoing review, or approved, reduces administrative efforts and speeds up the publication process \cite{albu2025}. Moreover, El Archi et al. provide systematic literature evidence from smart tourism destinations about the efficiency of officer-based content management processes \cite{elarchi2023}.
+
+Promotion redemption is an integral part of ensuring the effectiveness of vouchers and accurate data collection. According to Zhang, Li, and Hua, the use of cloud-based tourism promotion platforms helps monitor the redemption process, offering immediate feedback on the results of tourism promotions for both merchants and authorities involved in managing the area \cite{zhang2022}. Moreover, Suanpang et al. argue that AI integrated platforms can analyze the redemption process to derive insights about the behavior of visitors at a specific location \cite{suanpang2024}. Concerning the issue in the Philippine setting, Cruz argues that there is a problem in the ranking of smart tourism in the Philippines compared to its neighboring Southeast Asian countries because of insufficient digital infrastructure related to promotions \cite{cruz2024}. Furthermore, Nuñez and Borbon argue that the owners of establishments in Camarines Sur region rely only on informal channels for promotions since no formalized digital system exists in the local tourism office \cite{nunez2022}. Finally, Buena and Borbon confirm that destination image and tourist engagement are dependent on promotional information provided through informal channels \cite{buena2022}.
+
+Notification mechanisms built into the voucher systems have implications for the level of workflow efficiency achieved. The study conducted by DOST and the City Government of Naga reveals the reliance of smart city information systems on notification system infrastructure for maintaining consistency in operations among several different agencies—a concept easily adaptable to tourism platform construction \cite{dost2024,naga2024}. Garces illustrates how Smart Tourism Technologies in Philippine destinations generate tangible gains in tourist experiences from the implementation of promotion discovery processes coupled with communication mechanisms that notify tourism authorities and business owners \cite{garces2025}. Predictive capabilities through the incorporation of redemption and analytics in platforms provide an advantage to tourism managers in forecasting the risk of satisfaction issues for tourists while optimizing promotional activities, as explained by Hidayat and Amin \cite{hidayat2023}. Buhalis and Amaranggana prove that connected destination platforms delivering real-time redemption and foot traffic analytics generate high-quality promotion \cite{amaranggana2023}.
+
+The revision cycle, which involves the tourism officer giving structured feedback instead of rejecting the voucher directly, is highlighted by Cabrera and Mendoza as an ideal approach to ensuring continued collaboration between the tourism officers and businesses within the private sector in the Philippines, as the resubmission rate would be much higher with such an approach \cite{cabrera2024}. According to Park et al., the contactless system and verification system based on codes, which have already been established in Philippine tourism using QR technology for payments, ensure the necessary user familiarity with the system for voucher code redemption systems \cite{park2022}. Nicart, Arellano, and Acunin highlight the fact that systems requiring the registration and submission of documents by the enterprise in advance prior to promotion ensure higher credibility of the offered promotions \cite{nicart2024}. Evangelista reveals that systems of digital marketing that involve formal registration processes yield greater tourist involvement compared to informal social networks-based promotions \cite{evangelista2022}. Rocamora points out that there are existing examples of verified digital promotions for the country from the experience of other countries \cite{rocamora2022}.
+
+Security, privacy, and compliance issues are critical considerations when designing tourism voucher platforms for Philippine local government units. The Digital Payments Roadmap by the Bangko Sentral ng Pilipinas outlines standards for secure transactions that define authentication requirements for tourism voucher platforms \cite{bsp2024}. The Philippine Statistics Authority notes that tourism information systems must conform to the provisions of the Data Privacy Act of 2012 \cite{psa2025}. Kerpedzhiev et al. assert that digital platforms used as governance infrastructure should incorporate security protocols from the inception of their design \cite{kerpedzhiev2021}. Carlisle, Ivanov, and Dijkmans show that the success of platforms is not only dependent on technical functionality but on the proper definition of governance and data-sharing responsibilities among stakeholders \cite{carlisle2021}. It is further noted that digital coordination formalization involving the cooperation of LGUs and tourism companies is explicitly mentioned in the NEDA Bicol Regional Development Plan \cite{neda2023}. As per Wang, Li, and Zhang, the adoption and usage rates are high for platforms whose designs are in line with strategic sustainability goals \cite{wang2024}. Furthermore, MDPI supports that platforms designed to serve the SDG-oriented governance purposes enjoy the backing of stakeholders \cite{mdpi2025}. Finally, the World Tourism Organization stipulates that destination management platforms that incorporate promotional management and visitor management are the current benchmarks for digital DMO governance practices \cite{unwto2023}.
+
+\subsection{Web-Based Tourism Platforms for Tourist-Establishment Connectivity}
+
+Digital platforms have emerged to be the main technology used in connecting travelers with local enterprises within destinations around the globe. According to Kim, Lee, and Ham, personalization and interface feedback of a destination website influence revisit intention and destination loyalty positively, and an establishment profile has a direct impact on tourist engagement \cite{kim2023}. Buhalis argues that technology innovations bring the entire range of tourism stakeholders together in service ecosystems, and that smart platforms are now the central infrastructure for connecting travelers with local service providers \cite{buhalis2020}. UN Tourism confirms that digital tools are now recognized globally as indispensable instruments for revitalizing tourism economies and improving connectivity between destinations and their visitors \cite{untourism2024}.
+
+Establishment profile management capacities lie at the core of successful connectivity. According to Li and Fang, AI-driven recommendation engines rely heavily on the accuracy and consistency of information presented in establishment profiles created by business owners, thus incentivizing business owners to maintain an extensive digital footprint \cite{li2024}. As per Santos and Correia, multi-channel platforms integrating description information, picture gallery, and events information provide higher user engagement than text-based ones, hence confirming the choice of BYANAGA to use visual cards as part of establishment profiles \cite{santos2023}. Lopez and Ortega argue further that experience-based travel destinations mitigate expectation-experience discrepancy with the help of accurate presentation of establishments' content and available services and discounts at present \cite{lopez2024}. Xiang, Stienmetz, and Fesenmaier demonstrate that smart tourism design, which integrates accurate and rich resource information from establishments, forms the conceptual foundation for the development of competitive smart destinations \cite{xiang2021}.
+
+As far as the Philippines is concerned, the Philippine Development Plan highlights investment in digital tourism platforms linking LGUs' tourism departments to tourism businesses as a key regional tourism competitiveness priority \cite{neda2022}. As underlined by the DOT Philippine Tourism Development Plan, digital systems facilitating equal promotion of tourism businesses of all sizes are explicitly needed, which directly confirms BYANAGA's strategy to give equal access to all registered establishments \cite{dot2023}. Del Vecchio et al. demonstrate that smart tourism platforms which embed governance structures into their establishment listing and content management processes deliver measurably higher sustainable performance outcomes than those without formal content governance \cite{delvecchio2022}. Event listings integrated into establishment pages further improve customer engagement with platforms: as Zhang, Li, and Hua show, cloud-IoT platforms that combine establishment information with real-time event and promotional content generate significantly higher tourist interaction rates than static directories \cite{zhang2022cloud}.
+
+Mobile-responsiveness in website design will serve best when implementing tourist and establishment connectivity in secondary Philippine cities. Mobile access to the Internet is identified as the main means of connectivity used by tourists and establishments in cities such as Naga as per the DICT Free Wi-Fi for All Program \cite{dictwifi}. Mobile responsiveness for tourist engagement is also supported by the findings of PricewaterhouseCoopers showing greater customer engagement in tourism businesses using mobile-responsive websites \cite{pwc2021}. Tourist demand in Bicol region destinations for centralization of digital information regarding events is also reported by the Philippine Information Agency, which proves the validity of integrating an event calendar into BYANAGA \cite{pia2023}. Tourism offices managing digital tourism platforms are found in DOT Region V to create accurate digital identity representations of a destination; higher customer satisfaction levels are achieved when regional tourism offices actively manage their destination's digital directory \cite{dotregionv2024}. TPB supports this finding, noting that responsiveness and quality of platform management directly correlate with visitor satisfaction outcomes at the national level \cite{tpb2023}.
+
+Data sharing between tourism offices and establishment owners by means of platform participation frameworks helps fill the coordination gap reported from tourism operations in the Bicol region. Say found that smart tourism readiness — encompassing digital infrastructure and service innovation — significantly and positively affects visitor satisfaction in Philippine urban destinations, underscoring the need for institutionally governed data-sharing mechanisms between public tourism bodies and local enterprises \cite{say2025}. According to the Asian Development Bank, platform implementations in secondary cities of Southeast Asia where platform governance was institutionalized achieved higher sustainability and involved less administrative work \cite{adb2025}. Hidayat and Amin find that formalized data-sharing arrangements within tourism engagement platforms in Asia-Pacific destinations lead to better alignment between promotional activities and visitor demand patterns \cite{hidayat2023a}. Buhalis and Amaranggana further show that smart destination systems with embedded inter-stakeholder data governance produce consistently higher platform performance outcomes than those where data responsibilities remain informal \cite{buhalis2023}.
+
+The ultimate proof lies in tourism satisfaction levels and economic outcomes from digital connectivity platforms. The World Travel and Tourism Council Philippines Report indicates that digital tourism infrastructure investments deliver quantifiable economic gains via higher tourist expenditure and longer stay periods \cite{wttc2025}. European Smart Tourism Destinations frameworks reveal that destination connectivity platforms at the city level that achieve the governance structure embedded in BYANAGA constitute the present-day international standard for urban tourism digital transformation \cite{european2022}. Hidayat's research shows that smart platform analytics linking visitor flow predictions to operational dashboards enable destination managers to make proactive resource allocation decisions that improve service quality \cite{hidayat2023b}. Jarupunphol, Arpornpisal, and Rittippant confirm that tourism platform adoption is significantly driven by performance expectancy and hedonic motivation among users, reinforcing the importance of BYANAGA's design in facilitating genuine tourist and establishment engagement \cite{jarupunphol2025}. Wang, Li, and Zhang also confirm that digital platforms whose design is compatible with the strategic sustainability objectives of their hosts will have higher adoption rates and continued use compared to those not aligned with organizational objectives, affirming the design of BYANAGA with respect to equitable tourism development \cite{wang2024b}.
+
+\subsection{Usability Evaluation and Performance Assessment of Tourism Web Platforms}
+
+Web-based tourism platform evaluation has become an advanced multi-method field that includes usability tools, performance testing, and contextual evaluation of user acceptance. For tourism platforms that cater to different user groups — such as BYANAGA, which caters to tourists, business operators, and the tourism officer — role differentiation in administering the System Usability Scale is advised by Gretzel, considering that usability of the tourist interface differs from that of the governance panel, and each should be evaluated using a different process \cite{gretzel2023}. Recent studies further emphasize that usability remains a primary determinant of tourism website success, particularly in systems involving promotional discovery, navigability, and user-centered service integration \cite{tsegaye2021,atiya2021}.
+ 
+The User Acceptance Test plays a complementary role to established measures for assessing usability. Alalwan, Dwivedi, and Rana point out that while conducting tests among regular users performing role-specific tasks, usability problems emerge that cannot be captured using standardized surveys alone \cite{utauttourism2023}. In the context of tourism websites in the Philippines, Satzinger, Jackson, and Burd note that UAT must account for users' varying levels of digital readiness, as acceptability depends on successful task performance even among users with limited technical background \cite{satzinger2021}. Additional usability studies on tourism websites found that poor navigation, inconsistent object naming, and overwhelming interface layouts significantly reduce task completion efficiency and overall tourist satisfaction \cite{huang2020,martinez2020}. In evaluating the performance metrics of websites,both technical and experiential aspects need to be considered at once. According to Pressman and Maxim, platform acceptability is governed by response time standards: under one second for optimal performance, one to three seconds for acceptable performance, and beyond three seconds performance degrades to the point that users abandon tasks at rates of 20 to 40 percent \cite{pressman2020}. Moreover, according to Del Vecchio et al., the evaluation of the performance of tourism websites involves assessing data accuracy apart from response times, because inaccuracy can be more damaging than slowness to tourists' confidence \cite{delvecchio2022}.
+
+Criteria for data accuracy for platforms that will manage the tourism industry in LGUs are provided by Mariani and Borghi, who explain that redemption data management platforms must be able to generate accuracy rates of greater than 95 percent before any implementation can take place \cite{mariani2022}. This is essential to ensure that analysis dashboards provide accurate results for the benefit of tourism officers as well as establishment proprietors. Xiang argues that digital experience benchmarking in smart tourism destinations requires the inclusion of data accuracy metrics in addition to usability ratings, because the platform's value in governance decision-making is solely dependent on the accuracy of the aggregated data \cite{xiang2022}. Similarly, Li finds that data accuracy ensures significantly better decision-making from users in integrated tourism services using AI-based performance scoring, provided that data accuracy remains at 95 percent or above \cite{li2023}. ISO/IEC 25010 further establishes that functional correctness — encompassing accuracy, completeness, and appropriateness of outputs — is a fundamental quality characteristic that platform evaluations must assess alongside usability \cite{iso25010}. Contemporary ISO/IEC 25010-based evaluations also highlight the importance of reliability, portability, and performance efficiency in modern tourism information systems \cite{maja2024,isoeval2020}. Gretzel and colleagues argue that smart tourism information systems require evaluation of both their data layer and their user interface layer simultaneously, as weaknesses in either layer independently degrade the platform's overall service value \cite{smarttourism2022}. Platform evaluation in a Philippine environment necessitates considering specific circumstances surrounding use. According to the Camarines Sur Provincial Tourism Office, tourism platform performance in the Bicol region is significantly affected by connectivity variations during peak tourist periods, making user load testing an important performance measure in evaluating BYANAGA \cite{camarinessur2025}. Sommerville argues that expert validation conducted as a preliminary step before user testing allows domain experts to analyze platform architecture and design workflows before exposure to end users, thereby minimizing workflow errors that UAT participants would likely overlook \cite{sommerville2021}. According to Koo, Chung, and Nam, sustainability performance measures — including resiliency, reliability, and account management — are additional metrics that experts should evaluate before proceeding to UAT \cite{koo2021}. Recent studies on tourism website standardization additionally emphasize the importance of integrating usability engineering principles throughout the entire development lifecycle to improve accessibility and user retention \cite{andag2021,reviewtourism2020}.
+
+The iterative refinement cycle between evaluation phases plays an important role. Chung and Koo support the idea that smart tourism platforms should undergo several iterations of usability testing, because users' mental models for promotion and voucher management interfaces change and mature with experience, rendering a single evaluation round insufficient \cite{chung2022}. Mahmud states that cloud-based tourism platforms can undergo several iterations of testing for uptime and reliability since server-side problems revealed at initial stages do not yet affect the end user \cite{mahmud2022}. Gretzel emphasizes that mixed methodologies combining both quantitative measurements and qualitative evaluations provide the most beneficial suggestions for platform improvement, since quantitative scores reveal the dimensions to improve while qualitative evaluations explain the reasoning behind them \cite{gretzel2023}. According to Martin, incorporating user feedback obtained during evaluation stages into digital feedback loop engineering in tourism platforms results in more usable platforms than what developers' intuition can produce \cite{martin2023}. Du further demonstrates that intelligent tourism information systems that undergo iterative evaluation and refinement based on collected user data achieve significantly higher accuracy and satisfaction scores than those evaluated only once \cite{du2021}.
+
+Evaluation benchmarks for Philippine LGU tourism platforms are derived from the work of Ramos, who found that SUS scores within the range of 72 to 84 represent what should be achieved by well-polished multi-purpose tourism platforms after iterative development — thus providing the benchmark for comparing BYANAGA's evaluation scores \cite{ramos2024}. Mendoza finds that evaluation of Philippine tourism platforms should consider service continuity alongside usability scores, because a platform may score highly in usability but low in reliability, thus being unable to deliver continued value to its tourism offices \cite{mendoza2024}. Estrada finds that tourism platform evaluation conducted under realistic conditions — such as simulated peak tourist load — provides better benchmark performance than evaluation under ideal conditions, a critical consideration for BYANAGA's performance testing process \cite{estrada2025}. Jeong and Shin note that trust factors such as accuracy of data perception, authentication, and visibility of voucher verification processes are among the most effective indicators of adoption of tourism sites \cite{jeong2023}. Thus, the system employed by BYANAGA of having officers approve vouchers can be considered an indicator of trust within the assessment framework. According to Balinas and Oro, online scoring of digital services provided by tourism websites in the Philippines yields better evaluation data when conducted by users who represent the actual target audience \cite{balinas2024}.
+
+\section{Synthesis of the State-of-the-Art}
+
+The reviewed literature across digital voucher and promotional management
+systems, web-based tourist-establishment connectivity platforms, and usability
+evaluation and performance assessment frameworks reveals a consistent and
+convergent direction: effective destination management in the contemporary
+tourism landscape requires integrated, governed, and user-centered digital
+platforms that simultaneously serve the discovery needs of tourists, the
+promotional management needs of local businesses, and the governance and
+reporting needs of tourism authorities.
+
+Across the first body of literature, a clear consensus emerges that the
+governance architecture of a digital voucher system is as important as its
+technical functionality. Studies consistently demonstrate that platforms
+embedding an officer-mediated approval layer between establishment-submitted
+promotional content and tourist-facing publication produce significantly
+higher content quality, greater tourist trust, and more reliable redemption
+data than open-access promotional directories \cite{ahn2022, albu2025,
+elarchi2023}. The revision workflow, where the tourism officer sends
+structured feedback instead of rejecting a voucher outright, is
+specifically identified as a best practice for sustaining the collaborative
+relationship between governance authorities and private sector businesses
+in Philippine LGU contexts \cite{cabrera2024, nunez2022}. Redemption
+mechanics, particularly code-based confirmation panels, are shown to
+produce more accurate promotional performance data and reduce disputed
+claims compared to informal verification methods \cite{zhang2022,
+park2022}. The broader Philippine context reveals that the absence of
+formalized digital promotion infrastructure at the local tourism office
+level is a documented and measurable barrier to equitable promotional
+access for small and medium tourism enterprises \cite{cruz2024, nunez2022,
+buena2022, evangelista2022}. Security and data governance compliance,
+particularly alignment with the Data Privacy Act of 2012 and the
+standards established by the Bangko Sentral ng Pilipinas, are
+identified as non-negotiable foundational requirements for any tourism
+platform operating within Philippine LGU governance contexts
+\cite{bsp2024, psa2025, kerpedzhiev2021, carlisle2021}.
+
+The second body of literature establishes that the core value of
+tourist-establishment connectivity platforms lies in their ability to
+reduce information asymmetry between tourists seeking services and
+businesses offering them \cite{kim2023, buhalis2020, untourism2024}.
+Self-managed establishment profiles with rich visual content, including
+descriptions, image galleries, pricing information, and available
+promotional offers displayed in card-based layouts, are consistently
+identified as the interface design approach that generates the highest
+tourist browsing engagement and establishment participation rates
+\cite{li2024, santos2023, xiang2021}. The integration of event listings
+within establishment profiles is shown to produce higher tourist planning
+engagement than either static directories or event calendars operating
+independently \cite{zhang2022cloud}. Mobile-responsive web design is
+confirmed as the appropriate architecture for Philippine secondary city
+deployment contexts, where tourists and small business operators
+predominantly access digital services through mobile browsers rather
+than desktop workstations \cite{dictwifi, pwc2021}. The formalization
+of data-sharing arrangements between tourism offices and the private
+sector through platform participation frameworks, instead of informal
+coordination channels, is associated with higher platform sustainability,
+lower administrative overhead, and better alignment between promotional
+activity and actual tourist demand \cite{say2025, adb2025, hidayat2023a,
+buhalis2023}. The alignment of platform design with the strategic
+sustainability goals of the host institution, specifically the Naga
+City Tourism Office's mandate for equitable tourism development,
+is identified as a significant predictor of long-term adoption and
+sustained usage \cite{wang2024b, jarupunphol2025}.
+
+The third body of literature confirms that comprehensive tourism platform
+evaluation requires a multi-instrument, multi-role, and iterative
+methodology that no single assessment tool can adequately capture alone
+\cite{gretzel2023, delvecchio2022}. The System Usability Scale remains
+the most widely validated instrument for measuring perceived usability
+across diverse tourism platform contexts, with scores between 72 and 84
+representing the established benchmark for well-refined multi-role
+platforms following iterative development in Philippine LGU contexts
+\cite{ramos2024, mendoza2024}. Role-differentiated administration of
+the SUS is recommended for platforms serving multiple user groups,
+such as tourists, establishment owners, and tourism officers, because the
+usability requirements of consumer-facing interfaces differ substantially
+from those of governance and reporting panels \cite{gretzel2023,
+satzinger2021}. User Acceptance Testing conducted with representative
+users performing role-specific tasks surfaces interaction problems that
+standardized instruments cannot detect, making it an indispensable
+complement to SUS-based evaluation \cite{utauttourism2023}. Technical
+performance assessment must incorporate data accuracy verification
+alongside response time benchmarking, since inaccuracies in tourism data
+systems undermine the decision-support value of analytics dashboards
+more severely than moderate latency increases \cite{delvecchio2022,
+mariani2022, xiang2022, iso25010}. Expert validation conducted before
+user-based testing reduces the risk of fundamental workflow errors that
+UAT participants would overlook within the scope of predefined tasks
+\cite{sommerville2021, koo2021}. Iterative refinement between evaluation
+rounds, where user feedback from each cycle systematically informs
+the next development iteration, is identified as the most reliable
+approach to achieving platforms whose final usability and reliability
+scores exceed those achievable through single-round evaluation
+\cite{chung2022, mahmud2022, martin2023, du2021}. Trust factors,
+specifically the transparency and reliability of voucher verification
+mechanisms, are among the strongest predictors of tourism platform
+adoption in the Philippine context \cite{jeong2023, balinas2024}.
+
+Taken together, the three bodies of literature provide comprehensive
+and convergent empirical grounding for the design, governance structure,
+and evaluation methodology of BYANAGA. The specific operational gaps
+motivating this study, namely the absence of a centralized voucher and
+promotion discovery platform for tourists in Naga City, the lack of a
+structured digital promotion channel for local establishments, and the
+fragmented coordination between the Naga City Tourism Office and the
+private tourism sector, are each well-documented in the reviewed
+literature as both practically significant and effectively addressable
+through a purposefully designed, officer-governed, web-based platform
+architecture \cite{cruz2024, nunez2022, buena2022, carlisle2021,
+neda2023}. The literature further confirms that meaningful digital
+transformation in local tourism governance does not require costly
+smart city infrastructure, but rather a platform whose design is
+precisely calibrated to the specific operational realities of its
+users and the governance context of its deployment \cite{say2025,
+adb2025, ramos2024, wang2024b}.
+
+\section{Gap Bridged by the Study}
+
+This research mainly addresses the gaps in the fragmented digital management
+processes of tourism in Naga City. The literature review reveals a big
+gap in the system, which consists of tourism information, promotional
+offers, events, and other services related to establishments being spread
+out through different platforms. The fragmented system makes it difficult
+for tourists to access promotions and tourism information, as well as less
+efficient for stakeholders in the industry. As such, the study recommends
+the implementation of the BYANAGA system, a web-based platform for
+managing tourism in a more integrated way.
+
+In addition, the study also considers the coordination challenge
+highlighted in the previous studies about the absence of an organized
+collaboration system between the tourist department and other
+establishments in the area. Current procedures depend largely on
+informal communication and separate promotional efforts, which lead to
+inconsistency in the distribution of information as well as ineffective
+data exchange among individuals involved. With the development of the
+proposed platform, all parties concerned including tourists, owners of
+establishments, tourism department personnel, and city administrators can
+interact via the platform through functions including vouchers,
+establishment profiles, event announcement, and report generation.
+
+\section{Theoretical Framework}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Theoretical.png}
+    \caption{Theoretical Paradigm}
+    \label{fig:example}
+\end{figure}
+
+This study is anchored on contemporary theories that explain the role of integrated digital platforms in smart destination management, stakeholder collaboration, and technology-driven tourism governance.
+
+The primary theory underpinning this study is the Smart Tourism Information Systems Framework \cite{du2021}. This theory explains that intelligent destination management is achieved through the integration of big data analytics, artificial intelligence, IoT devices, and cloud computing infrastructure that transform fragmented tourism information into actionable intelligence. Du \cite{du2021} demonstrates that data mining algorithms, real-time visualization technology, and predictive analytics significantly improve tourism information processing, visitor flow management, and operational decision-making.
+
+The second supporting theory is the Digital Transformation and Platform Ecosystems Theory \cite{kerpedzhiev2021, carlisle2021}. This theory emphasizes that digital platforms function as sociotechnical infrastructures that fundamentally reshape tourism service delivery by enabling multi-stakeholder collaboration, data exchange networks, and value co-creation among government units, local businesses, and tourists. Carlisle et al. \cite{carlisle2021} establish that digital tourism platforms serve as connective infrastructure enabling data exchange and service integration rather than isolated information systems.
+
+The third supporting theory is the Extended Unified Theory of Acceptance and Use of Technology 2 (UTAUT2) adapted for tourism contexts \cite{venkatesh2012, jarupunphol2025}. This theory highlights that technology adoption in tourism settings is influenced by performance expectancy, effort expectancy, social influence, facilitating conditions, hedonic motivation, price value, and habit. Jarupunphol et al. \cite{jarupunphol2025} demonstrate that UTAUT2 effectively explains technology adoption in tourism contexts including AI chatbots, mobile applications, and digital itinerary systems.
+
+Together, these three theories enhance the study's focus by aligning technological capabilities, organizational integration, and user acceptance into a unified framework. They collectively explain why a Smart Tourism Destination Management Platform is necessary to bridge digital-physical disconnects, how it should function as both technical infrastructure and collaborative ecosystem, and what conditions are required for its effective adoption in local destination management contexts.
+
+\section{Conceptual Framework}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{ipoo_framework.png}
+    \caption{Conceptual Paradigm}
+    \label{fig:example}
+\end{figure}
+
+This conceptual framework is anchored on the Input-Process-Output-Outcome (IPOO) model and illustrates the overall flow of the study in designing, developing, and evaluating the BYANAGA Smart Tourism Destination Management Platform for Naga City. The framework presents how identified tourism management concerns and stakeholder requirements are transformed into a functional smart tourism platform and how the resulting system contributes to improved tourism operations and decision-making.
+
+The \textbf{Input} phase represents the foundational elements and existing conditions considered in the study. This includes the identification of process and system problems currently experienced in tourism management, such as fragmented tourism information, manual monitoring procedures, delayed reporting, lack of centralized promotional systems, and limited real-time analytics capabilities. The study also considers the effects of these problems on key stakeholders, including tourists, establishment owners, and tourism officers, as well as destination profiles, operational workflows, and the limitations of existing technologies currently used by the Local Government Unit and tourism-related establishments. Furthermore, constraints related to government policies, available budget, operational limitations, and project timeframe are identified to guide the scope and feasibility of the proposed system.
+
+The \textbf{Process} phase describes the developmental procedures undertaken in the study to produce the proposed platform. This phase begins with conducting surveys, interviews, and requirement-gathering activities involving tourists, establishment owners, and tourism officers to identify operational challenges and determine user requirements. The collected data are analyzed to define both functional and non-functional system requirements. Based on the findings, the researchers proceed with the design and development of the Smart Tourism Destination Management Platform prototype, including the creation of system interfaces, centralized databases, voucher management modules, reporting dashboards, and analytics features. The developed prototype is then presented to stakeholders and evaluators for validation, testing, and feedback. The system undergoes refinement and iterative improvement based on the comments, recommendations, and usability evaluation results gathered during the testing and validation stages.
+
+The \textbf{Output} phase represents the tangible products of the research and development process. The primary output is a functional prototype of the Smart Tourism Destination Management Platform capable of supporting tourism-related operations through centralized digital services. The system includes modules for establishment management, voucher management, tourist destination viewing, reporting, and analytics. In addition, the platform provides a centralized database for managing tourism-related records, including tourist information, establishments, voucher claims, and reports. Standardized system documentation, user manuals, operational guidelines, and technical references are also produced to support the implementation, maintenance, and future enhancement of the platform.
+
+The \textbf{Outcome} phase reflects the expected long-term contributions and benefits of the proposed platform to tourism management in Naga City. The implementation of the system is expected to improve the efficiency, accuracy, and accessibility of tourism operations by reducing manual processes and centralizing tourism information management. The platform is also expected to strengthen coordination and communication among tourism officers, establishment owners, and tourists through a unified digital environment. Furthermore, the integration of analytics, monitoring, and AI-supported functionalities is anticipated to promote data-driven, sustainable, and innovative tourism management practices that support better decision-making, improved tourist experiences, and enhanced tourism service delivery within the city.
+
+A feedback loop is incorporated within the framework to emphasize the iterative nature of the developmental research process. Feedback gathered from stakeholders, evaluators, and end-users during system validation and actual usage is continuously used to reassess the identified inputs, refine system processes, and improve platform outputs. This feedback mechanism ensures that the BYANAGA platform remains adaptive, user-centered, and responsive to the evolving needs of tourism management and tourism stakeholders in Naga City.
+
+\section{Statement of the Problem}
+
+The main problem of the study is the design and development of a smart tourism destination management platform. Specifically, the study seeks to answer the following questions:
+
+\begin{enumerate}
+    \item What is the current state of and issues encountered in tourism management in Naga City?
+    \item What smart tourism management platform could be designed and developed to enhance the tourism experience in Naga City?
+    \item What is the level of usability, functionality, reliability, and security of the smart tourism management platform?
+\end{enumerate}
+
+\section{Assumptions}
+
+The research was done based on the following assumptions, which are deemed necessary for ensuring consistency, relevancy, and credibility in conducting the research and developing the suggested platform.
+
+\begin{enumerate}
+    \item There are specific operational weaknesses and problems concerning the availability of information, promotional activities, tourism management, and coordination among tourism stakeholders in the current tourism management practices of Naga City, which can be studied and documented by conducting surveys, interviews, and other relevant methods.
+    \item It is possible to develop the smart tourism management platform using the available technology in the context of Naga City, and such platform may help in managing tourism information, vouchers, promoting activities, and providing communication tools for improving tourism services and coordination.
+    \item The measures and standards used for assessing the proposed smart tourism management platform, especially when it comes to usability, functionality, reliability, and security, can be considered suitable criteria for evaluating the proposed system prototype, and the participants who will take part in the assessment process will be able to give credible opinions about the proposed platform.
+\end{enumerate}
+
+\section{Scope and Delimitation}
+
+The objective of this research is to design and develop a web-based Smart Tourism Destination Management Platform called BYANAGA for Naga City, Camarines Sur. The platform attempts to solve three operational issues: (1) there is no unified platform where tourists can discover vouchers and promotions; (2) there is no established online digital promotion system for the local tourism businesses; and (3) disorganized coordination between the Naga City Tourism Office and the private tourism industry.
+
+There are four distinct user roles in this platform. Tourists have an ability to create a user account, view establishment profile cards that contain the title, description, picture, and voucher badge, explore available vouchers, make use of them at registered establishments utilizing vouchers' unique codes, etc. Owners can also register business accounts, submit documents, maintain and update their profiles when approved, add and publish events, create and submit vouchers, edit/cancel vouchers awaiting for approval, check all created vouchers depending on their current statuses, get revision feedbacks, confirm tourists' voucher redemption actions in the Redemption Panel, as well as see their performance metrics like total number of vouchers used and visitors foot traffic. Tourism officer's responsibilities include approving registration of establishments, vouchers' checking and feedback providing, event management, encoding tourists' arrivals, and tourism report generation and exporting. Administrator's role involves management of all user accounts, monitoring analytics and key performance indicators dashboards for the whole city, accessing audit trail, data backup management, etc.
+
+The research is delimited by the following parameters. First, the platform is created and analyzed as a web application alone, while mobile app development is out of the scope and considered for future research. Second, the participants are purposively chosen from the population of Naga City, and therefore generalizability to other settings is not assumed. Third, the platform is assessed using SUS and UAT on a prototype basis only, and its evaluation in practice remains beyond the present scope. Fourth, the platform lacks third-party payment gateway support, and vouchers serve as online discount certificates used offline at participating businesses. Fifth, the administrator feature is included in the platform but validated through expert review.
+
+\section{Significance of the Study}
+
+BYANAGA assists in the digitalization of Naga City’s tourism industry by helping fill gaps in promotion distribution, establishment-to-tourist connection, and tourism management, which have been identified as factors currently hindering the city’s competitiveness in the tourism industry.
+
+To Tourists and the Public in General. BYANAGA offers a one-stop solution for tourists visiting Naga City who want to find promotions and vouchers offered by all of the city’s registered establishments. Tourists can now look into promotions without the hassle of going through various sources. Event listings will also assist tourists in planning their visit according to the cultural and business events in the city.
+
+For Establishment Owners and Small Businesses. BYANAGA enables small tourism businesses to have equal opportunities in terms of a structured digital promotional channel that was not available before. Regardless of their budget constraints, registration in BYANAGA enables small and medium tourism business owners to participate in a digital promotional process governed by the tourism office where tourists can be reached, tracked, and analyzed, providing more balanced promotional opportunities and contributing to overall economic development in the region.
+
+For the Naga City Tourism Office and Local Government Unit. BYANAGA shifts the position of the tourism office personnel from mere coordination to governance through the use of a platform. The platform makes it possible to have standardized procedures in establishing businesses, approving vouchers, managing events, and encoding visitors' data. The platform facilitates decision-making based on data analysis in developing tourism strategies consistent with the NEDA Bicol Regional Development Plan [42] and DOT digitalization mandate [54]. Moreover, the platform contributes to Sustainable Development Goal (SDG) 8, 9, 11, and 17.
+
+Recommendations for Further Researchers and System Developers. This research paper offers an adaptable template for creating online tourist destination portals within secondary cities in the Philippines and proves that digital transformation in local tourism governance can be accomplished without smart city infrastructure investment. The multi-agent design, voucher processing system led by officials, and multiple instrument assessment methods are replicable among other fragmented cities.
+
+\section{Definition of Terms}
+
+The following terms are defined as they are specifically applied to the design, development, and evaluation of the Smart Tourism Destination Management Platform for Naga City.
+
+\textit{Administrator.} The user role in BYANAGA responsible for system-wide oversight, including management of all user accounts across all roles; monitoring city-wide analytics and KPI dashboards; access to the full audit trail and security logs; management of data backups and restore operations; and configuration of all system-wide settings and notification rules.
+
+\textit{Approval Queue.} The interface within the Tourism Officer panel displaying all pending establishment registration applications and submitted vouchers awaiting review. The officer processes each item by either approving or sending revision feedback with written notes specifying required changes.
+
+\textit{Foot Traffic Data.} Visitor presence and movement data generated through BYANAGA's redemption confirmation records and profile engagement logs, providing establishment owners and the tourism officer with insights into visitor distribution patterns across registered establishments and time periods.
+
+\textit{Fragmented Data.} Tourism records and information scattered across multiple files, offices, or systems, resulting in inconsistencies and difficulties in generating complete and timely reports prior to the introduction of the centralized platform.
+
+\textit{User Acceptance Testing (UAT).} The formal evaluation phase in which actual end-users, such as tourism officers and partner businesses, use the prototype to verify whether its features, usability, and performance meet practical requirements.
+
+\textit{Centralized Database.} A single, integrated repository within the platform where all tourism-related data from different sources are stored, organized, secured, and accessed to eliminate duplication and fragmentation.
+
+\textit{Tourist.} A registered user of the BYANAGA platform who browses establishment profiles, discovers available vouchers and promotions from all registered Naga City establishments in a single website, and redeems vouchers at registered establishments by presenting the unique voucher code at the Redemption Panel.
+
+\textit{Tourism Officer.} The user role in BYANAGA representing the Naga City Tourism Office staff member responsible for platform governance. The tourism officer reviews establishment registration applications, approves or sends revision feedback on voucher submissions, manages city-wide events, encodes visitor arrival records, generates tourism reports, and monitors platform analytics.
+
+\textit{Voucher.} A digital promotional offer created and submitted by an Establishment Owner through BYANAGA, reviewed and approved by the Tourism Officer, and published to tourists on the platform. Each approved voucher carries a unique redemption code. Voucher statuses are: Pending, Revision, or Approved.
+
+\clearpage
+
+%-----------------------------
+% Chapter 2
+%-----------------------------
+
+\chapter{Methods}
+
+\section{Research Design}
+The study employed a developmental research design using a 
+descriptive-developmental approach appropriate for studies involving the 
+design and development of an information system prototype. The research 
+focused on identifying the current issues encountered in tourism management 
+in Naga City and using the gathered findings as the basis for designing the 
+proposed BYANAGA Smart Tourism Management Platform.
+
+For SOP 1, the study assessed the current state of and issues encountered 
+in tourism management in Naga City. This phase involved gathering 
+quantitative and qualitative data from tourists, establishment owners, and 
+the tourism officer regarding existing tourism management practices, 
+tourism-related operational problems, technological limitations, promotional 
+management issues, reporting difficulties, and tourism information 
+accessibility challenges. Survey questionnaires, interviews, and observations 
+were utilized to identify the operational gaps and requirements necessary for 
+the proposed platform.
+
+For SOP 2, the study focused on the design and prototype development of the 
+proposed BYANAGA Smart Tourism Management Platform. Based on the findings 
+gathered during the requirement analysis phase, the researchers designed the 
+proposed platform architecture, database structure, workflow processes, 
+interface prototypes, and role-based modules intended for tourists, 
+establishment owners, tourism officers, and administrators. System design 
+artifacts such as the System Workflow Process, Use Case Diagram (UCD), Data Flow Diagram (DFD), 
+Business Process Modeling Notation (BPMN), and Entity Relationship Diagram 
+(ERD) were also developed to represent the structure and operational 
+processes of the proposed platform.
+
+For SOP 3, the study will evaluate the proposed BYANAGA prototype in terms 
+of usability, functionality, reliability, and security. Usability will be 
+assessed using the System Usability Scale (SUS), which consists of ten 
+standardized statements measuring ease of use, learnability, efficiency, and 
+user satisfaction, to be administered to tourist, establishment owner, and 
+tourism officer respondents after a guided walkthrough of the prototype. 
+Functionality will be assessed through a researcher-made evaluation 
+questionnaire focused on determining whether the proposed features, modules, 
+workflows, and role-based processes align with the identified tourism 
+management requirements. Reliability will be assessed based on evaluator 
+perception of the consistency and dependability of the proposed workflows, 
+data handling processes, reporting mechanisms, and voucher management 
+procedures as represented within the prototype design. Security will be 
+assessed through evaluator review of the proposed user access control 
+mechanisms, approval workflows, account management structure, and protection 
+of tourism-related records incorporated within the prototype. All four 
+dimensions will be evaluated by selected respondents and IT evaluators using 
+structured questionnaires to be administered upon completion of the 
+prototype.
+
+\section{Respondents and Sampling}
+
+The respondents of the study were composed of those who have participated in tourism operations and tourism-related services in Naga City. Purposive sampling was done when choosing the respondents since they have been selected based on their relevance to the study and their experience with tourism.
+
+A total of thirty-six (36) respondents were identified in conducting the interviews. There were thirty (30) tourists, five (5) establishment owners, and one (1) tourism officer from the Local Government Unit of Naga City as respondents. The thirty (30) tourists were made up of people who had been, were, or had any knowledge of the tourism services within Naga City. They were considered respondents since they were essential in providing data on the common problems encountered during their searches for tourism information and plans.
+
+Five (5) establishment owners served as respondents for the purposes of gathering data on their tourism operations and experiences in the tourism industry.
+
+The tourism officer respondents are from the Local Government Unit Tourism Office and offered information concerning administration and operations in relation to monitoring of tourism, managing of tourism data, reporting and decision making in tourism. Inclusion of such respondents in the study made it possible for the project to acquire the required operational and end-user views.
+
+\section{Data Gathering Procedure}
+
+The data collection methodology involved a systematic three-step approach 
+guaranteeing complete data collection for both qualitative and quantitative 
+data at all levels of platform development and evaluation.
+
+Step 1 -- Problem Identification and Requirement Gathering. The first step 
+in the data collection methodology involved establishing the baseline by 
+conducting: (a) interviews with the Tourism Officer of the Naga City DMO to 
+determine the processes used, pain points, and governance requirements for 
+vouchers and establishments; (b) survey questionnaires administered to 
+establishment owners and tourists using a 5-point Likert Scale with 
+open-ended questions about their current methods of discovery and their 
+requirements for the platform; and (c) observations conducted at the DMO 
+and analysis of available tourism documents to determine the constraints 
+influencing the design requirements of the platform.
+
+Phase 2 -- Design and Development of the System. Based on the findings 
+gathered in Phase 1, the design and development of BYANAGA was carried out 
+as outlined in Section 2.6. All four role-based interfaces and related 
+systems such as the centralized database, voucher submission and approval 
+system, voucher redemption confirmation system, and analytics and reporting 
+system were designed. System documentation artifacts including the Use Case 
+Diagram (UCD), Data Flow Diagram (DFD), Business Process Modeling Notation 
+(BPMN), and Entity Relationship Diagram (ERD) were prepared as part of 
+system design and development.
+
+Phase 3 -- Prototype Evaluation and Assessment. Upon completion of the 
+proposed BYANAGA prototype, the researchers will conduct prototype 
+evaluation through expert validation and respondent assessment. IT experts 
+and academic evaluators will review the proposed system architecture, 
+interface layouts, database structure, process models, and workflow designs 
+to determine whether the prototype meets the intended technical and 
+operational requirements.
+
+Selected respondents consisting of tourists, establishment owners, and the 
+tourism officer will also be asked to evaluate the proposed prototype based 
+on its usability, functionality, reliability, and security using structured 
+evaluation questionnaires. The System Usability Scale (SUS) will be utilized 
+to assess usability, while separate evaluation indicators will be used to 
+assess the functionality, reliability, and security aspects of the proposed 
+platform. The gathered feedback and evaluation results will serve as the 
+basis for identifying possible improvements to the proposed system prototype.
+
+\section{Research Instrument}
+
+Survey Questionnaire. Conducted during Phase 1 among tourists and 
+establishment owners. The questionnaire consisted of closed-ended questions 
+using a 5-point Likert Scale to assess the current problems encountered in 
+tourism management, technological gaps, AI integration preferences, and 
+perceived benefits of the proposed platform. Open-ended questions were also 
+included to gather additional qualitative insights and recommendations from 
+respondents.
+
+Interview Guide Questionnaire. A semi-structured interview guide was 
+prepared for the Tourism Officer to gather qualitative information regarding 
+current tourism management processes, report preparation procedures, 
+monitoring challenges, tourism data management practices, and desired 
+platform features. The interview responses were used in identifying the 
+operational requirements of the proposed platform.
+
+System Usability Scale (SUS). The System Usability Scale will be used to 
+evaluate the usability of the proposed BYANAGA prototype once it is ready 
+for assessment. The SUS questionnaire consists of ten standardized 
+statements designed to measure ease of use, learnability, efficiency, and 
+user satisfaction. It will be administered to selected respondents after a 
+guided walkthrough of the proposed platform prototype.
+
+Prototype Evaluation Questionnaire. A researcher-made evaluation 
+questionnaire will be utilized to assess the functionality, reliability, and 
+security of the proposed platform prototype. The questionnaire will contain 
+indicators related to the completeness of system features, consistency of 
+system processes, reliability of data handling, user access control, and 
+protection of tourism-related records. The evaluation questionnaire will use 
+a 5-point Likert Scale for respondent and expert assessment and will be 
+administered upon completion of the prototype.
+
+\section{Ethical Considerations}
+
+Proper ethical considerations were made when implementing the research study. It should be noted that participation in the research study was voluntary for all the respondents, and they were informed about the objectives of the research study before involving them in the research study. Forms were provided to all the respondents in which consent was sought from them before starting the research study.
+
+All the respondents were informed that their information would remain confidential, and the data collected would only be used for research purposes. It is also necessary to state that all the respondents had the freedom not to respond to the survey questions or even withdraw from the research study without any repercussions. All the procedures of the research study adhered to the provisions of the Data Privacy Act of 2012 (Republic Act No. 10173).
+
+\section{Statistical Treatment of Data}
+
+Statistical analysis using descriptive statistics was employed to analyze the quantitative data collected through the questionnaire survey. 
+Frequency and percentage distribution were used to describe the profile of the respondents. 
+Weighted mean was used to determine the respondents' perceptions on the existing tourism management system, technological gaps, usefulness of the proposed BYANAGA platform, and their intention to adopt the same.
+Weighted mean was also used to determine the respondents’ assessment of the proposed BYANAGA prototype in terms of usability, functionality, reliability, and security. The computed weighted mean values were interpreted using the established Likert Scale verbal interpretation table.
+
+\subsection*{Weighted Mean}
+The weighted mean was computed using the following formula:
+\begin{equation*}
+    \bar{x} = \frac{\sum_{i=1}^{n} w_i x_i}{\sum_{i=1}^{n} w_i}
+\end{equation*}
+where:
+\begin{itemize}
+    \item $x_i$ = the value of each observation (scale response)
+    \item $w_i$ = the weight or frequency corresponding to each observation
+    \item $n$ = the total number of observations
+    \item $\sum w_i x_i$ = the sum of all weighted values
+    \item $\sum w_i$ = the total weight or total frequency
+\end{itemize}
+
+\subsection*{Frequency and Percentage Distribution}
+Frequency and percentage distribution were used to summarize the demographic and profile characteristics of both tourist and establishment respondents. Percentage was computed using the formula:
+\begin{equation*}
+    \% = \frac{f}{n} \times 100
+\end{equation*}
+where $f$ is the frequency of each category and $n$ is the total number of respondents.
+
+\subsection*{Likert Scale and Verbal Interpretation}
+A 5-point Likert Scale was used for all survey items across all respondent groups — tourists, establishment owners, and the tourism officer. The interval size was computed using the equal interval method as follows:
+\begin{align*}
+    \text{Range} &= 5 - 1 = 4 \\
+    \text{Interval Size} &= \frac{\text{Range}}{\text{Number of Classes}} = \frac{4}{5} = 0.80
+\end{align*}
+
+The same scale and verbal interpretation were applied uniformly to all survey parts and all respondent groups, as shown in the table below.
+
+\begin{table}[h]
+    \centering
+    \caption{Likert Scale Verbal Interpretation}
+    \label{tab:likert_scale}
+    \begin{tabular}{|c|l|}
+        \hline
+        \textbf{Range of Score} & \textbf{Verbal Interpretation} \\
+        \hline
+        1.00 -- 1.79 & Strongly Disagree \\
+        1.80 -- 2.59 & Disagree \\
+        2.60 -- 3.39 & Neutral \\
+        3.40 -- 4.19 & Agree \\
+        4.20 -- 5.00 & Strongly Agree \\
+        \hline
+    \end{tabular}
+\end{table}
+
+This uniform interpretation was applied across all survey dimensions: current problems encountered, technological gaps, AI integration, platform benefits, and platform enhancements, for both tourist and establishment respondents.
+
+\subsection*{Survey-Interview for the Tourism Officer}
+A structured survey-interview was administered to the LGU Tourism Officer to capture operational practices, data management challenges, and platform feature requirements that could not be adequately measured through a standardized questionnaire alone. The survey-interview consisted of ten guided question areas covering: current methods of collecting and storing tourism data; types of records managed; tools currently in use; problems encountered in report preparation; time required to prepare reports; information needed for tourism decision-making; difficulties in monitoring tourist activities and establishments; desired dashboard features; decisions that would benefit from AI-generated insights; and the types of reports the system should automatically generate.
+
+The responses gathered from the survey-interview were analyzed qualitatively through content analysis. Recurring themes and commonly cited concerns were identified and used to directly inform the design requirements of the BYANAGA platform, particularly its dashboard, reporting, and AI-based insight modules.
+
+\section{System Design and Architecture}
+
+The BYANAGA Smart Tourism Destination Management Platform supports four different roles for users on one integrated web-based system in Naga City. These include centralized promotions discovery for the tourists, provision of establishment owners with a digital promotion mechanism under the governance of the tourism officer, and the administrator's access to full system control. It comprises three layers, namely, Presentation Layer that implements the web-based interfaces with differentiated functionality for each of the four users, Application Layer responsible for implementing the entire logic such as voucher transactions, approval queue, redemption status, analysis calculation, and reporting, and the Data Layer that ensures the storage in a persistent fashion via relational database comprising tables for establishments, vouchers, redemptions, events, arrivals, users, notifications, and logs.
+
+    \subsection{Software Development Process}
+    This study adopted an iterative software development process adapted from
+    the spiral model to guide the design, development, and evaluation of the
+    BYANAGA platform. The process consists of six sequential phases organized
+    in a feedback loop, ensuring that each phase informs and refines the next
+    until a deployable platform is produced.
+
+    The first phase is \textbf{Gather}, where the research team collected
+    functional and non-functional requirements through surveys and stakeholder
+    interviews with tourists, establishment owners, and the tourism officer.
+    The second phase is \textbf{Design}, where interface prototypes were
+    produced for the Tourist, Establishment Owner, and Tourism Officer
+    interfaces based on the gathered requirements. The third phase is
+    \textbf{Build}, where all interface modules and backend logic were
+    implemented based on the approved design prototypes.
+
+    The fourth phase is \textbf{Verify}, where the platform was tested with
+    the primary user groups serving as QA respondents. The fifth phase is
+    \textbf{Release}, where the team deployed the BYANAGA platform to Naga
+    City stakeholders for evaluation. The sixth phase is \textbf{Evaluate},
+    where the team assessed the voucher management, establishment listings,
+    and event capabilities of the deployed platform. A Feedback Loop connects
+    the Evaluate phase back to the beginning of the cycle, ensuring that
+    evaluation findings inform iterative refinements in subsequent development
+    cycles.
+
+    \subsection{Data Flow Diagram}
+    A Data Flow Diagram was constructed to model how data moves through the
+    BYANAGA system from external entities through internal processes to data
+    stores. The diagram was developed at two levels. Level 0 presents the
+    context diagram showing the four external entities and their high-level
+    data exchanges with the system. Level 1 decomposes the system into five
+    fundamental sub-processes: (1) User Authentication and Account Management,
+    (2) Establishment Profile and Content Management, (3) Voucher Submission
+    and Approval Process, (4) Voucher Redemption and Analysis Process, and
+    (5) Administration and System Monitoring. Every sub-process is connected
+    to an audit record data store to support system monitoring and
+    accountability.
+
+    \subsection{Use Case Diagram}
+
+    A Use Case Diagram was developed to define the functional boundaries of
+    the BYANAGA platform and document the specific interactions each external
+    actor is authorized to perform within the system. The diagram was used
+    during the requirements analysis phase to communicate role-based system
+    functionality to both the technical development team and non-technical
+    stakeholders, and served as a reference artifact during expert validation.
+    The four actors identified are the Tourist, Establishment Owner, Tourism
+    Officer, and Administrator, each associated with a distinct set of use
+    cases that reflect their designated responsibilities within the platform.
+    Sequential dependencies between related use cases are represented through
+    include relationships to capture the governed flow of key platform
+    processes.
+
+    \subsection{Business Process Modeling Notation (BPMN)}
+
+    Business Process Modeling Notation was used to model the major operational
+    workflows of BYANAGA as graphical process diagrams encompassing actions,
+    decisions, events, and actor interactions. BPMN was selected due to its
+    standardized visual notation, which supports validation by both technical
+    developers and non-technical participants including tourism officers and
+    establishment owners during expert review. Four major processes were
+    modeled: (1) Establishment Registration and Approval, (2) Voucher
+    Submission, Review, and Publication, (3) Tourist Voucher Discovery and
+    Redemption, and (4) Tourism Officer Reporting and Visitor Data Encoding.
+
+    \subsection{Entity-Relationship Diagram}
+
+    An Entity-Relationship Diagram was developed to model the relational
+    database structure of the BYANAGA platform. The ERD was used to define
+    the entities, attributes, primary keys, foreign keys, and relationships
+    required to support the platform's operations, and served as the blueprint
+    for database design and implementation during the Build phase. Eight main
+    entities were identified: User, Establishment, Voucher, Redemption, Event,
+    Visitor Record, Notification, and Audit Log, each representing a core
+    component of the platform's data architecture.
+
+\section{Validation and Testing Methods}
+
+Expert Validation. The proposed BYANAGA prototype underwent expert validation conducted by IT experts, system developers, and academic evaluators. The evaluation focused on assessing the proposed system architecture, interface design, workflow structure, database design, and process models in terms of functionality, reliability, security, and design consistency.
+
+Prototype Assessment. Selected respondents consisting of tourists, establishment owners, and the tourism officer evaluated the proposed prototype through structured evaluation questionnaires. The respondents assessed the proposed platform in terms of usability, functionality, reliability, and security based on the presented interface prototypes, workflow demonstrations, and proposed system features.
+
+Usability Assessment. Usability was measured using the System Usability Scale (SUS), which evaluated the proposed platform in terms of ease of use, learnability, efficiency, and user satisfaction.
+
+Functionality Assessment. Functionality assessment focused on determining whether the proposed features, modules, workflows, and role-based processes aligned with the identified tourism management requirements gathered during the initial phase of the study.
+
+Reliability Assessment. Reliability assessment focused on the consistency and dependability of the proposed workflows, data handling processes, reporting mechanisms, and voucher management procedures represented within the prototype.
+
+Security Assessment. Security assessment focused on evaluating the proposed user access control mechanisms, approval workflows, account management structure, and protection of tourism-related records incorporated within the prototype design.
+
+Feedback Analysis. Quantitative data gathered from the SUS and prototype evaluation questionnaires were analyzed using descriptive statistical methods such as weighted mean. Qualitative feedback gathered from interviews, consultations, and open-ended responses was analyzed through thematic content analysis and used as the basis for refining the proposed prototype.
+
+\chapter{Results and Discussions}
+
+\subsection{Problem 1: Current State and Issues Encountered in Tourism 
+Management in Naga City}
+
+This section presents the results of the survey conducted among thirty (30) tourist 
+respondents, five (5) establishment owner, and one (1) tourism officer respondents to document the current 
+state of tourism management in Naga City and identify the specific problems and 
+inefficiencies that motivated the development of BYANAGA. The findings are 
+organized according to respondent group and survey section.
+
+\subsubsection{Tourist Respondents}
+
+\paragraph{Respondent Profile}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Travel Experience} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        First-time Visitors & 16 & 53.33\% \\
+        Repeat Visitors     & 14 & 46.67\% \\
+        \hline
+        \textbf{Total} & \textbf{30} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Travel Experience of Tourist Respondents}
+    \label{tab:travel_experience}
+\end{table}
+
+Table~\ref{tab:travel_experience} presents the distribution of travel experience 
+among the thirty (30) tourist respondents. The majority were first-time visitors 
+to Naga City, comprising 53.33\% of the total, while repeat visitors accounted 
+for 46.67\%. This near-equal distribution is significant for the development of 
+BYANAGA. First-time visitors, lacking prior familiarity with Naga City's tourism 
+offerings, are most dependent on a centralized platform to discover available 
+promotions, establishments, and vouchers. Repeat visitors, on the other hand, 
+represent a segment that has already experienced the fragmented information 
+landscape and stands to benefit directly from the organizational convenience that 
+BYANAGA provides. The near-equal split between both groups confirms that the 
+platform must simultaneously serve the discovery needs of new visitors and the 
+convenience expectations of returning ones.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Travel Group} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        Solo       & 8  & 26.67\% \\
+        Family     & 6  & 20.00\% \\
+        Friends    & 10 & 33.33\% \\
+        Group Tour & 6  & 20.00\% \\
+        \hline
+        \textbf{Total} & \textbf{30} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Travel Group Composition of Tourist Respondents}
+    \label{tab:travel_group}
+\end{table}
+
+Table~\ref{tab:travel_group} shows the travel group composition of the tourist 
+respondents. The largest proportion traveled with friends (33.33\%), followed 
+by solo travelers (26.67\%), while family groups and organized group tours each 
+accounted for 20.00\%. The combined dominance of friend-group and solo travelers 
+at 60\% of total respondents indicates that the majority of tourists visiting Naga 
+City make relatively independent and self-directed travel decisions. These traveler 
+types are less likely to rely on pre-arranged tour packages and more likely to seek 
+real-time, self-service digital tools for discovering deals, planning their itinerary, 
+and choosing which establishments to visit. This finding directly supports 
+BYANAGA's tourist-facing features — including the establishment browsing 
+interface, voucher discovery page, personal itinerary builder, and wishlist — as 
+these are precisely the tools that independent travelers use to organize and 
+optimize their visits without the guidance of a tour coordinator.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Length of Stay} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        Day Trip    & 16 & 53.33\% \\
+        1--3 Nights & 10 & 33.33\% \\
+        4+ Nights   & 4  & 13.33\% \\
+        \hline
+        \textbf{Total} & \textbf{30} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Length of Stay of Tourist Respondents}
+    \label{tab:length_stay}
+\end{table}
+
+Table~\ref{tab:length_stay} reveals that more than half of tourist respondents 
+(53.33\%) were day-trip visitors, followed by those staying one to three nights 
+(33.33\%), and a small minority staying four or more nights (13.33\%). The 
+dominance of day-trip visitors carries significant implications for the design 
+priority of BYANAGA. A tourist spending only a few hours in Naga City has an 
+extremely limited window to discover, evaluate, and claim available promotions. 
+Under the current fragmented landscape --- where deals are scattered across 
+multiple websites and social media platforms --- a day-trip visitor is most likely 
+to miss promotional opportunities entirely due to the time cost of the discovery 
+process. This finding directly validates BYANAGA's core value proposition: 
+consolidating all available Naga City vouchers, promos, and establishment 
+information into a single website that a tourist can access immediately upon 
+arrival. The shorter the visit duration, the greater the impact of a centralized 
+platform on the tourist's ability to maximize their experience.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Main Interest} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        Attractions  & 10 & 33.33\% \\
+        Food/Promos  & 8  & 26.67\% \\
+        Culture      & 7  & 23.33\% \\
+        Shopping     & 5  & 16.67\% \\
+        \hline
+        \textbf{Total} & \textbf{30} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Primary Tourist Interests of Respondents}
+    \label{tab:tourist_interests}
+\end{table}
+
+Table~\ref{tab:tourist_interests} shows that physical attractions ranked as the 
+primary interest of tourist respondents (33.33\%), followed closely by food and 
+promotions (26.67\%), culture (23.33\%), and shopping (16.67\%). The strong 
+second-place showing of food and promotions as a primary travel motivator is 
+particularly relevant to BYANAGA's purpose. More than one in four tourists 
+identified food and promotional deals as their main reason for visiting --- a 
+figure that confirms promotional offers are not merely a secondary convenience 
+but a genuine driver of tourist decision-making and destination choice. When 
+combined with the cultural interest category (23.33\%), which frequently includes 
+local food experiences in the Philippine context, the centrality of food tourism 
+to Naga City's visitor market becomes even more apparent. These findings reinforce 
+the appropriateness of BYANAGA's voucher and promotion discovery system as a 
+primary platform feature rather than a supplementary one.
+
+\paragraph{Current Problems and Impacts}
+
+\begin{table}[h]
+\centering
+\caption{Current Problems and Impacts Experienced by Tourist Respondents}
+\label{tab:tourist_problems}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+\textbf{Statement} & \textbf{Weighted Mean} & \textbf{Interpretation} \\
+\midrule
+Too many websites/social media to check for deals & 3.97 & Agree \\
+Promos expire before I can find and reach them & 4.00 & Agree \\
+Language barriers on local menus/offers & 3.60 & Agree \\
+Hard to combine deals across categories & 4.10 & Agree \\
+\midrule
+\textbf{Overall Weighted Mean} & \textbf{3.92} & \textbf{Agree} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:tourist_problems} presents the tourist respondents' ratings of 
+current problems encountered when searching for and accessing tourism promotions 
+in Naga City, yielding an overall weighted mean of 3.92 interpreted as Agree. 
+The highest-rated problem was the difficulty of combining deals across 
+restaurants, transport services, and attractions (M=4.10), indicating that 
+tourists are not merely inconvenienced by scattered information --- they are 
+actively unable to maximize their travel value because no mechanism exists to 
+cross-reference and bundle multiple promotional offers in one place. This finding 
+is the most direct validation of BYANAGA's multi-establishment voucher 
+aggregation feature.
+
+The second-highest rated problem was promotional expiry before discovery 
+(M=4.00), which reflects a real and recurring economic cost for tourists: deals 
+that exist but cannot be found in time are functionally equivalent to deals that 
+do not exist at all. This aligns closely with the day-trip visitor dominance 
+identified in Table~\ref{tab:length_stay}, as shorter visit durations compound 
+the urgency of timely promotional discovery. The burden of monitoring too many 
+websites and social media channels (M=3.97) received a nearly identical rating, 
+confirming that the problem is not a lack of digital promotional content but its 
+structural fragmentation across too many platforms. Language barriers on local 
+menus and offers, while the lowest-rated item (M=3.60), still received an Agree 
+interpretation, identifying it as a secondary but genuine obstacle for non-local 
+tourists engaging with Naga City's establishments.
+
+\paragraph{Technological Gaps}
+
+\begin{table}[h]
+\centering
+\caption{Current Problems and Impacts Experienced by Tourist Respondents}
+\label{tab:tourist_problems}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+\textbf{Statement} & \textbf{Weighted Mean} & \textbf{Interpretation} \\
+\midrule
+Too many websites/social media to check for deals & 3.97 & Agree \\
+Promos expire before I can find and reach them & 4.00 & Agree \\
+Language barriers on local menus/offers & 3.60 & Agree \\
+Hard to combine deals across categories & 4.10 & Agree \\
+\midrule
+\textbf{Overall Weighted Mean} & \textbf{3.92} & \textbf{Agree} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:tourist_tech_gaps} presents tourist respondents' assessments of 
+specific digital tool gaps in the current Naga City tourism landscape, producing 
+an overall weighted mean of 4.28 interpreted as Strongly Agree --- the 
+second-highest rated section among tourist respondents. The highest-rated gap 
+was the desire for QR code scanning at venues for instant deal access (M=4.53), 
+which directly aligns with BYANAGA's unique voucher code redemption mechanism, 
+where tourists receive a unique code per claimed voucher that is confirmed by 
+establishment staff through the Redemption Panel.
+
+The desire for offline access to saved offers (M=4.40) reflects practical 
+connectivity limitations tourists may encounter while visiting establishments. 
+BYANAGA's wishlist and saved voucher features address this need by allowing 
+tourists to save relevant promotions before they arrive at an establishment. The 
+absence of a reliable review and rating system for promotions and establishments 
+(M=4.33) directly supports BYANAGA's post-redemption review feature, which 
+enables tourists to rate and review an establishment after a confirmed voucher 
+redemption. The need for a location-aware promotional map (M=4.27) reflects 
+tourists' desire for proximity-based discovery --- a feature identified as a 
+future development direction for BYANAGA. The finding that current applications 
+fail to filter deals by budget or time (M=3.87), while the lowest-rated item, 
+still falls in the Agree range and supports the search and filter functionality 
+built into BYANAGA's voucher discovery interface.
+
+\paragraph{Filipino Dish and Food Bundle Interest}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Response} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        Yes & 27 & 90.00\% \\
+        No  & 3  & 10.00\% \\
+        \hline
+        \textbf{Total} & \textbf{30} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Interest in Filipino Dishes Among Tourist Respondents}
+    \label{tab:filipino_dish_tourist}
+\end{table}
+
+Table~\ref{tab:filipino_dish_tourist} reveals that 90.00\% of tourist respondents 
+expressed interest in trying Filipino dishes during their visit to Naga City, 
+with only 10.00\% indicating otherwise. This near-unanimous interest underscores 
+the centrality of local culinary experience to the Naga City tourist visit and 
+directly establishes food tourism as a primary engagement driver for the 
+platform's establishment directory. The Bicol Region's distinct culinary 
+identity --- anchored by signature dishes such as Bicol Express, Laing, and 
+Pinangat --- represents a powerful and differentiated tourist attraction that 
+local food and dining establishments can leverage through BYANAGA's promotional 
+voucher system.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Response} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        Yes       & 22 & 73.33\% \\
+        Sometimes & 4  & 13.33\% \\
+        No        & 4  & 13.33\% \\
+        \hline
+        \textbf{Total} & \textbf{30} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Interest in Food Bundle Promotions Among Tourist Respondents}
+    \label{tab:food_bundle_tourist}
+\end{table}
+
+Table~\ref{tab:food_bundle_tourist} shows that 73.33\% of tourist respondents 
+actively seek food bundle promotions when visiting a destination, with an 
+additional 13.33\% doing so occasionally. Cumulatively, 86.66\% of tourist 
+respondents demonstrated a positive disposition toward bundled promotional 
+offers. This finding confirms that bundled promotional mechanics --- where a 
+single voucher provides value across multiple items or services --- are the 
+preferred promotional format among the majority of the tourist respondent pool, 
+directly validating the bundle-capable voucher design within BYANAGA's 
+establishment owner portal. Furthermore, it establishes that food bundle 
+promotions function as a visit motivator: tourists who are already planning to 
+visit are more likely to choose specific establishments when a promotional bundle 
+is available, reinforcing the urgency of providing establishment owners with a 
+streamlined tool for publishing bundle-type vouchers.
+
+\paragraph{AI Integration Potential}
+
+\begin{table}[h]
+\centering
+\caption{AI Integration Potential as Rated by Tourist Respondents}
+\label{tab:tourist_ai}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+\textbf{Statement} & \textbf{Weighted Mean} & \textbf{Interpretation} \\
+\midrule
+AI shows deals matching taste and current location & 4.70 & Strongly Agree \\
+Voice search for nearby local deals & 4.37 & Strongly Agree \\
+AI warns if better deals exist before I commit & 4.80 & Strongly Agree \\
+Chatbot answers promo-specific questions & 4.43 & Strongly Agree \\
+AI builds personalized 1-day Naga itinerary & 4.67 & Strongly Agree \\
+\midrule
+\textbf{Overall Weighted Mean} & \textbf{4.59} & \textbf{Strongly Agree} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:tourist_ai} presents tourist respondents' ratings of proposed 
+AI-powered features, yielding an overall weighted mean of 4.59 --- the 
+highest-rated section across all tourist survey categories, interpreted as 
+Strongly Agree. This result indicates that respondents do not merely accept 
+AI-powered tourism features as optional enhancements but regard them as strongly 
+desirable and expected capabilities of a modern tourism platform.
+
+The highest-rated feature was AI notifications alerting tourists when better 
+deals exist before they commit to a current offer (M=4.80), reflecting a 
+sophisticated consumer preference for deal optimization rather than simple 
+discovery. Location-aware AI deal matching based on personal taste and proximity 
+ranked second (M=4.70), confirming strong demand for personalized, context-sensitive 
+promotional recommendations. AI-powered itinerary building (M=4.67), chatbot 
+assistance for promo queries (M=4.43), and voice search (M=4.37) all received 
+Strongly Agree ratings, demonstrating broad and consistent appetite for intelligent 
+tourism assistance across multiple interaction modes. These findings collectively 
+establish a clear direction for AI-enhanced feature development in future 
+iterations of BYANAGA.
+
+\paragraph{Platform Benefits for Better Tourism}
+
+\begin{table}[h]
+\centering
+\caption{Perceived Platform Benefits for City-Wide Tourism Improvement (Tourist)}
+\label{tab:tourist_platform_benefits}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+\textbf{Statement} & \textbf{Weighted Mean} & \textbf{Interpretation} \\
+\midrule
+Track popular walking routes between deal locations & 4.57 & Strongly Agree \\
+Identify traffic hotspots around promo venues & 4.73 & Strongly Agree \\
+Spot seasonal deal preferences for event planning & 4.30 & Strongly Agree \\
+Map most-requested food types by neighborhood & 4.27 & Strongly Agree \\
+Predict busy hours to staff promo locations better & 4.67 & Strongly Agree \\
+\midrule
+\textbf{Overall Weighted Mean} & \textbf{4.51} & \textbf{Strongly Agree} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:tourist_platform_benefits} presents tourist respondents' ratings 
+of city-wide platform data benefits, yielding an overall weighted mean of 4.51 
+interpreted as Strongly Agree. Notably, this section asks tourists to evaluate 
+benefits that extend beyond personal convenience to the broader tourism 
+ecosystem, and their strong agreement across all items indicates that respondents 
+view a centralized tourism platform as a public good rather than merely a 
+personal utility.
+
+The highest-rated item was identifying traffic hotspots around promotional 
+venues (M=4.73), followed by predicting busy hours for better staffing at 
+promotional locations (M=4.67). These items reflect tourist awareness that 
+platform data can improve the quality of their visit indirectly --- by enabling 
+better resource management at the establishments and venues they patronize. 
+Tracking popular walking routes between deal locations (M=4.57) confirms that 
+tourists are interested in spatially organized promotional discovery. Spotting 
+seasonal deal preferences for event planning (M=4.30) and mapping food type 
+demand by neighborhood (M=4.27), while the lowest-rated items in this section, 
+still received Strongly Agree interpretations, confirming that the full range of 
+city-level data benefits proposed for BYANAGA are recognized and valued by the 
+tourist respondent group.
+
+\subsubsection{Establishment Respondents}
+
+\paragraph{Respondent Profile}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Establishment Type} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        Restaurant    & 2 & 40.00\% \\
+        Hotel         & 1 & 20.00\% \\
+        Tour Agency   & 1 & 20.00\% \\
+        Souvenir Shop & 1 & 20.00\% \\
+        \hline
+        \textbf{Total} & \textbf{5} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Type of Establishment of Respondents}
+    \label{tab:estab_type}
+\end{table}
+
+Table~\ref{tab:estab_type} presents the types of establishments represented 
+among the five (5) establishment respondents. Restaurants comprised the largest 
+single group at 40.00\%, with hotels, tour agencies, and souvenir shops each 
+representing 20.00\%. The dominance of restaurants is consistent with the strong 
+food tourism interest identified among tourist respondents in 
+Tables~\ref{tab:filipino_dish_tourist} and~\ref{tab:food_bundle_tourist}, 
+reflecting the outsized role of food and dining businesses in the Naga City 
+tourism landscape. The hotel respondent is noted within the context of BYANAGA's 
+design: while accommodation booking is not a platform feature, hotel 
+establishments are included in the directory as informational profiles displaying 
+contact details and descriptions for tourist inquiry purposes. The inclusion of 
+tour agencies and souvenir shops confirms that BYANAGA's establishment category 
+system represents the actual composition of Naga City's tourism business sector.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Years of Operation} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        1--3 Years  & 2 & 40.00\% \\
+        4--10 Years & 2 & 40.00\% \\
+        10+ Years   & 1 & 20.00\% \\
+        \hline
+        \textbf{Total} & \textbf{5} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Years of Operation of Establishment Respondents}
+    \label{tab:years_operation}
+\end{table}
+
+Table~\ref{tab:years_operation} shows that establishment respondents are 
+distributed across varying levels of operational experience. Forty percent have 
+operated for one to three years, another 40.00\% for four to ten years, and 
+20.00\% for more than ten years. The presence of newer businesses is particularly 
+relevant to BYANAGA's value proposition: establishments operating for one to 
+three years are least likely to have developed established promotional channels 
+or a loyal tourist following, making the platform's structured digital promotion 
+infrastructure most impactful for this segment. More experienced establishments 
+bring operational insight into the specific promotional coordination challenges 
+that BYANAGA is designed to address, lending credibility to the problems 
+identified in the subsequent survey sections.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Number of Employees} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        1--5 Employees   & 2 & 40.00\% \\
+        6--20 Employees  & 2 & 40.00\% \\
+        21--50 Employees & 1 & 20.00\% \\
+        \hline
+        \textbf{Total} & \textbf{5} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Number of Employees of Establishment Respondents}
+    \label{tab:num_employees}
+\end{table}
+
+Table~\ref{tab:num_employees} reveals that 80.00\% of establishment respondents 
+are small to medium enterprises, employing between one and twenty staff members. 
+Only 20.00\% employ between twenty-one and fifty workers, and none employ more 
+than fifty. This workforce profile is directly relevant to the platform's design 
+rationale: small businesses with one to five employees have extremely limited 
+capacity for managing multiple digital promotion channels simultaneously. The 
+time and resource cost of maintaining separate social media accounts, coordinating 
+with tourism offices through informal channels, and manually tracking promotional 
+redemptions represents a disproportionate burden for single-digit employee 
+operations. BYANAGA's establishment owner portal --- which consolidates profile 
+management, voucher creation, officer communication, and redemption tracking into 
+one interface --- is most impactful precisely for this majority small-enterprise 
+segment.
+
+\paragraph{Filipino Dish and Food Bundle Offerings}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Response} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        Yes & 2 & 100.00\% \\
+        No  & 0 & 0.00\%   \\
+        \hline
+        \textbf{Total} & \textbf{2} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Filipino Dish Offerings Among Restaurant Respondents}
+    \label{tab:filipino_dish_estab}
+\end{table}
+
+Table~\ref{tab:filipino_dish_estab} shows that all restaurant respondents 
+(100.00\%) confirmed they offer Filipino dishes, with specific mentions of 
+Bicol Express, Laing, and Pinangat as part of their menus. This unanimous 
+offering of regional Filipino cuisine establishes a direct supply-side 
+counterpart to the 90.00\% tourist demand for local dishes identified in 
+Table~\ref{tab:filipino_dish_tourist}. The alignment between tourist interest 
+and establishment offering is near-perfect, yet under the current fragmented 
+promotional landscape, this alignment is not being efficiently communicated. 
+Tourists who want to try Bicol Express cannot easily find which establishments 
+offer it at a promotional price, and restaurants offering Filipino food bundles 
+have no structured channel to reach interested tourists. BYANAGA's establishment 
+profile system directly bridges this communication gap.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Response} & \textbf{Frequency} & \textbf{Percentage} \\
+        \hline
+        Yes       & 3 & 60.00\% \\
+        Sometimes & 2 & 40.00\% \\
+        No        & 0 & 0.00\%  \\
+        \hline
+        \textbf{Total} & \textbf{5} & \textbf{100\%} \\
+        \hline
+    \end{tabular}
+    \caption{Food Bundle Promotional Practices Among Establishment Respondents}
+    \label{tab:food_bundle_estab}
+\end{table}
+
+Table~\ref{tab:food_bundle_estab} reveals that 60.00\% of establishment 
+respondents actively offer food bundle promotions, while the remaining 40.00\% 
+do so on an occasional basis. The complete absence of respondents who never 
+offer bundles confirms that promotional bundling is already recognized as an 
+effective tourist engagement strategy. However, the distinction between 
+consistent (60.00\%) and occasional (40.00\%) bundle providers is significant: 
+establishments that only sometimes offer bundles likely lack the organizational 
+infrastructure to manage bundle promotions consistently. BYANAGA's voucher 
+creation and management module directly addresses this gap by providing a 
+structured workflow --- from creation through officer approval to tourist-facing 
+publication --- that makes consistent promotional management practical even for 
+small-staff establishments.
+
+\paragraph{Current Problems and Impacts}
+
+\begin{table}[h]
+\centering
+\caption{Current Problems and Impacts Experienced by Establishment Respondents}
+\label{tab:estab_problems}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+\textbf{Statement} & \textbf{Weighted Mean} & \textbf{Interpretation} \\
+\midrule
+Lack of centralized info causes coordination issues & 4.50 & Strongly Agree \\
+Reduces operational efficiency and service quality & 4.40 & Strongly Agree \\
+Scattered promo info hurts visitor discovery & 4.80 & Strongly Agree \\
+Manual tracking limits bundle decision-making & 4.30 & Strongly Agree \\
+\midrule
+\textbf{Overall Weighted Mean} & \textbf{4.50} & \textbf{Strongly Agree} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:estab_problems} presents establishment respondents' ratings of 
+current operational problems caused by the absence of a centralized tourism 
+platform, yielding an overall weighted mean of 4.50 interpreted as Strongly 
+Agree. The highest-rated problem was that scattered promotional information 
+directly hurts visitor discovery and experience (M=4.80). This finding is 
+particularly significant because it comes from the business owners themselves 
+--- the very actors responsible for creating the promotions that tourists 
+struggle to find. Establishment owners are not merely passive observers of the 
+fragmentation problem but are directly experiencing its commercial consequences 
+in the form of reduced tourist traffic and missed redemption opportunities.
+
+The lack of centralized information causing coordination issues (M=4.50) and 
+the reduction in operational efficiency and service quality (M=4.40) each 
+reflect the daily administrative cost of doing business without an integrated 
+platform. Manual tracking limitations (M=4.30), while the lowest-rated item, 
+still received a Strongly Agree interpretation, indicating that even back-end 
+data challenges are strongly felt across the respondent group. These 
+establishment-side findings directly mirror and reinforce the problems 
+documented from the tourist side in Table~\ref{tab:tourist_problems}, providing 
+convergent evidence from both sides of the platform market for the necessity of 
+BYANAGA.
+
+\paragraph{Technological Gaps}
+
+\begin{table}[h]
+\centering
+\caption{Technological Gaps Identified by Establishment Respondents}
+\label{tab:estab_tech_gaps}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+\textbf{Statement} & \textbf{Weighted Mean} & \textbf{Interpretation} \\
+\midrule
+No unified platform for real-time promo sharing & 4.63 & Strongly Agree \\
+No automated monitoring of tourist preferences & 4.57 & Strongly Agree \\
+Digital gaps prevent easy data collection & 4.40 & Strongly Agree \\
+No mobile apps limit tourist access to promos & 4.80 & Strongly Agree \\
+Poor integration stops seamless communication & 4.47 & Strongly Agree \\
+\midrule
+\textbf{Overall Weighted Mean} & \textbf{4.57} & \textbf{Strongly Agree} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:estab_tech_gaps} presents establishment respondents' ratings of 
+digital infrastructure gaps, yielding an overall weighted mean of 4.57 
+interpreted as Strongly Agree --- tied as the highest-rated section among 
+establishment respondents alongside the AI Integration section. The highest-rated 
+gap was the absence of mobile-accessible tourism promotion tools limiting tourist 
+reach (M=4.80), directly validating BYANAGA's mobile-responsive web design as 
+the primary interface strategy. Establishment owners recognize that even when 
+they create promotional content, the absence of a mobile-optimized discovery 
+channel means that tourists cannot effectively find or act on those promotions 
+while on the move in the city.
+
+The absence of a unified digital platform for real-time promotional sharing 
+(M=4.63) and the lack of automated monitoring for tourist promotional preferences 
+(M=4.57) were rated nearly equally, reflecting that establishments feel the gap 
+both on the tourist-facing discovery side and in their own operational analytics. 
+Digital data collection barriers (M=4.40) and inadequate technology integration 
+preventing seamless communication (M=4.47) complete a comprehensive picture of 
+digital infrastructure deficiency that BYANAGA's centralized architecture, 
+voucher workflow, officer communication system, and analytics dashboard 
+collectively address.
+
+\paragraph{AI Integration}
+
+\begin{table}[h]
+\centering
+\caption{AI Integration Potential as Rated by Establishment Respondents}
+\label{tab:estab_ai}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+\textbf{Statement} & \textbf{Weighted Mean} & \textbf{Interpretation} \\
+\midrule
+AI-recommended bundles based on tourist preferences & 4.63 & Strongly Agree \\
+AI chat for instant promo inquiries & 4.63 & Strongly Agree \\
+AI analytics predicting popular promos and dishes & 3.93 & Agree \\
+AI matching tourists to nearby bundle deals & 4.70 & Strongly Agree \\
+AI alerts for peak demand promo coordination & 4.77 & Strongly Agree \\
+\midrule
+\textbf{Overall Weighted Mean} & \textbf{4.53} & \textbf{Strongly Agree} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:estab_ai} presents establishment respondents' ratings of proposed 
+AI-powered platform features, yielding an overall weighted mean of 4.53 
+interpreted as Strongly Agree. The highest-rated feature was AI alerts for peak 
+demand and promotional coordination (M=4.77), reflecting establishment owners' 
+acute need for proactive operational intelligence. Unlike tourist respondents who 
+prioritize AI for personal deal optimization, establishment owners prioritize AI 
+that helps them anticipate and prepare for high-demand periods --- a finding 
+consistent with their small workforce profiles identified in 
+Table~\ref{tab:num_employees}, where limited staff capacity makes advance 
+preparation for busy periods especially critical.
+
+AI matching of tourists to nearby bundle deals (M=4.70) ranked second, affirming 
+that establishment owners view AI-powered tourist routing as a customer 
+acquisition mechanism. AI-powered bundle recommendations and chatbot services 
+both received identical ratings of 4.63, confirming equal demand for automated 
+recommendation and interactive query resolution as customer engagement tools. 
+The notably lower rating for AI analytics predicting popular promotions and 
+Filipino dishes (M=3.93, Agree rather than Strongly Agree) is the only item 
+across both survey groups in the AI section to fall below the Strongly Agree 
+threshold, suggesting that some establishment owners hold practical reservations 
+about predictive analytics accuracy for their specific product offerings. This 
+finding indicates that the communication of AI analytics capabilities in 
+BYANAGA's onboarding materials should include concrete demonstrations of 
+predictive accuracy to build owner confidence.
+
+\paragraph{Platform Enhancements for Decision-Making}
+
+\begin{table}[h]
+\centering
+\caption{Platform Enhancements for Decision-Making as Rated by Establishment Respondents}
+\label{tab:estab_platform}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{3cm}}
+\toprule
+\textbf{Statement} & \textbf{Weighted Mean} & \textbf{Interpretation} \\
+\midrule
+Promo usage data aids resource allocation & 4.37 & Strongly Agree \\
+Bundle analytics optimize visitor\\ experience & 4.67 & Strongly Agree \\
+Real-time insights support policy\\ planning & 4.57 & Strongly Agree \\
+Trend data guides infrastructure\\ investments & 4.37 & Strongly Agree \\
+Feedback aggregation informs promo\\ regulations & 4.43 & Strongly Agree \\
+\midrule
+\textbf{Overall Weighted Mean} & \textbf{4.48} & \textbf{Strongly Agree} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:estab_platform} presents establishment respondents' ratings of 
+platform data benefits for tourism governance and operational planning, yielding 
+an overall weighted mean of 4.48 interpreted as Strongly Agree. The highest-rated 
+item was bundle analytics for optimizing visitor paths and experience (M=4.67), 
+followed by real-time insights for tourism policy planning (M=4.57). These 
+findings indicate that establishment owners view BYANAGA not merely as a 
+promotional channel for their individual businesses but as shared governance 
+infrastructure whose aggregate data benefits the entire Naga City tourism 
+ecosystem.
+
+Feedback aggregation for informing promotional regulations (M=4.43), promo 
+usage data for resource allocation, and trend data for infrastructure guidance 
+(both M=4.37) all received Strongly Agree interpretations. The consistent 
+alignment between establishment respondents' priorities in this section and the 
+platform benefits articulated in BYANAGA's significance to the Naga City Tourism 
+Office confirms that the platform's design serves both the operational needs of 
+individual businesses and the governance objectives of the tourism authority. 
+These findings demonstrate that establishment owners, tourism officers, and the 
+city government share a common interest in a well-functioning, data-driven 
+tourism platform.
+
+\subsubsection{Tourism Officer Interview Results}
+
+This section presents the findings gathered through a semi-structured interview
+conducted with the Tourism Officer of the Naga City Destination Management
+Organization (DMO). The interview was designed to document the current state of
+tourism data management, identify operational inefficiencies in reporting and
+coordination workflows, and establish the specific governance requirements that
+informed the design of BYANAGA's Tourism Officer interface. The findings are
+organized according to the ten interview themes covered during the session.
+
+% ============================================================
+% QUESTION 1
+% ============================================================
+
+\paragraph{Current Data Collection and Storage Practices}
+
+The Tourism Officer confirmed that tourism-related data in Naga City is
+currently collected through a combination of manual and semi-digital methods.
+Visitor data is primarily gathered through walk-in visitor logs recorded on the
+same day of arrival, alongside reports submitted by hotels and accommodation
+establishments on a periodic basis. Event registration forms --- both printed
+and submitted via Google Forms --- are used during tourism events to capture
+attendance figures. Collected data is then transferred and stored in spreadsheets
+for consolidation purposes. Printed documents and logbooks serve as the primary
+physical backup for records that have not yet been digitized. This multi-source,
+multi-format data collection approach results in fragmented records that are
+difficult to consolidate efficiently, particularly during high-volume tourism
+periods when the volume of incoming data from various sources peaks
+simultaneously.
+
+% ============================================================
+% QUESTION 2
+% ============================================================
+
+\paragraph{Types of Records Managed}
+
+The Tourism Officer manages a broad range of tourism-related records as part
+of the DMO's regular operations. These include tourist arrival data, destination
+records covering both the database of registered tourist attractions and
+operational details of individual sites, event records for tourism activities
+within the city, accommodation and hotel reports submitted by registered
+establishments, establishment records for businesses operating within the
+tourism sector, tourist feedback collected during and after visits, permits
+and accreditation documents for tourism-related businesses, and monthly tourism
+reports that are prepared and submitted to the Department of Tourism (DOT). The
+breadth of record types managed by a single officer underscores the operational
+complexity of the DMO's data management responsibilities and highlights the
+need for a centralized system capable of organizing multiple record categories
+within a single accessible interface --- a need that directly informed the
+design of BYANAGA's Tourism Officer panel, which consolidates establishment
+management, voucher governance, visitor data encoding, event management, and
+report generation into one integrated workflow environment.
+
+% ============================================================
+% QUESTION 3
+% ============================================================
+
+\paragraph{Current Tools and Systems in Use}
+
+When asked about the tools and systems currently used for data management, the
+Tourism Officer indicated that the DMO relies primarily on a combination of
+paper forms and printed logbooks for recording visitor arrivals and tourism
+activities, supplemented by Google Forms for specific event-related data
+collection. Spreadsheets serve as the main consolidation tool for aggregating
+data from multiple sources. The local government unit operates an existing
+system called eTRACS, though its application to tourism data management is
+limited. Reports are also received from establishments in various formats,
+further adding to the consolidation burden. The absence of a unified,
+purpose-built tourism data management system means that the officer must manually
+transfer data between these disparate tools before any reporting or analysis
+can take place. This workflow is both time-intensive and prone to transcription
+errors, particularly when consolidating data from physical logbooks into digital
+spreadsheets.
+
+% ============================================================
+% QUESTION 4
+% ============================================================
+
+\paragraph{Problems Encountered in Preparing Tourism Reports}
+
+The Tourism Officer identified several recurring problems in the report
+preparation process. Incomplete data was cited as a primary concern, as not
+all establishments and accommodation providers submit their reports on time or
+in consistent formats, resulting in gaps in the consolidated data set. Late
+submission of reports from partner establishments compounds this problem by
+compressing the available time for data consolidation before DMO reporting
+deadlines. Manual counting of visitor records --- particularly for walk-in logs
+and event attendance sheets --- is a time-consuming process that limits the
+officer's capacity to attend to other operational responsibilities. The overall
+consolidation process, which requires aggregating data from multiple physical
+and digital sources, was described as significantly time-consuming. The lack of
+real-time updates across data sources means that the officer has no immediate
+visibility into current tourism activity levels, making it difficult to respond
+proactively to emerging trends or operational issues. As the officer noted, the
+common problems encountered are incomplete data, late report submission from
+partner establishments, and the time-consuming nature of manual data
+consolidation without automated support.
+
+% ============================================================
+% QUESTION 5
+% ============================================================
+
+\paragraph{Time Required for Report Preparation}
+
+The Tourism Officer confirmed that preparing a complete tourism report
+typically requires one week or more from the point of data collection to
+final submission. This extended preparation period is attributable to the
+manual consolidation of data from multiple sources, the need to follow up with
+establishments for missing or incomplete submissions, and the absence of
+automated report generation tools. A report preparation cycle of one week or
+more represents a significant operational bottleneck in the DMO's workflows,
+as it delays the availability of tourism performance data for decision-making
+and creates a recurring workload burden that limits the officer's capacity for
+other governance responsibilities. This finding directly validates BYANAGA's
+automated report generation feature, which enables the Tourism Officer to
+generate, review, and export reports in real time from consolidated database
+records, eliminating the manual data gathering and consolidation cycle
+entirely.
+
+% ============================================================
+% QUESTION 6
+% ============================================================
+
+\paragraph{Information Needed for Tourism-Related Decisions}
+
+When asked what information is needed to support tourism-related decisions,
+the Tourism Officer identified a comprehensive set of data requirements. These
+include the total number of visitors by period, the most visited and least
+visited destinations within the city, event attendance figures, peak months
+and tourism seasons, tourist feedback and satisfaction data, establishment
+activity levels and compliance with reporting requirements, accommodation
+availability and occupancy rates, complaints and tourist concerns, and
+weather or safety-related information that may affect visitor activity. The
+breadth of this information requirement confirms that effective tourism
+governance depends on access to multiple intersecting data streams that are
+currently collected, stored, and managed separately. BYANAGA's centralized
+analytics dashboard --- which aggregates visitor trends, voucher redemption
+data, establishment performance metrics, and event activity within a single
+interface --- was designed to address precisely this multi-dimensional
+information need, providing the Tourism Officer with a consolidated view of
+the data required for informed operational and policy decisions.
+
+% ============================================================
+% QUESTION 7
+% ============================================================
+
+\paragraph{Difficulties in Monitoring Tourist Activities and Establishments}
+
+The Tourism Officer identified several persistent difficulties in monitoring
+tourist activities and the compliance of registered establishments. The
+absence of a real-time visitor count mechanism means that the officer has no
+immediate visibility into how many tourists are present in the city at any
+given time, relying instead on periodic reports that reflect past activity
+rather than current conditions. Establishments do not submit updates
+regularly, creating chronic gaps in the DMO's records of establishment
+operational status, pricing, and promotional activity. Tracking active events
+across the city is similarly challenging, as there is no unified calendar or
+notification system through which establishment owners and the DMO
+communicate event information. Limited staff capacity within the tourism
+office compounds these challenges, as the officer must manage monitoring
+responsibilities alongside data encoding, report preparation, and stakeholder
+coordination with a small team. Delayed reports from partner establishments
+and accommodation providers further reduce the currency and completeness of
+the data available for monitoring purposes. These findings directly informed
+BYANAGA's design of the Tourism Officer panel, which addresses each of these
+monitoring challenges through the establishment validation queue, the voucher
+review workflow, the event management module, and the visitor data encoding
+interface --- all integrated within a single governance panel that reduces
+coordination overhead and improves the timeliness and completeness of
+tourism data.
+
+% ============================================================
+% QUESTION 8
+% ============================================================
+
+\paragraph{Dashboard Features That Would Improve Operations}
+
+The Tourism Officer expressed strong interest in a range of dashboard features
+that would support more efficient and informed DMO operations. The most
+frequently mentioned features included a real-time total visitor count, a
+listing and ranking of top destinations by visitor volume, event monitoring
+tools providing visibility into upcoming and ongoing tourism activities,
+a comprehensive establishment list with operational status indicators,
+monthly visitor trend charts and graph summaries, date and destination
+filtering capabilities for targeted data analysis, automatic report
+generation eliminating the need for manual consolidation, downloadable
+reports in standard formats for DOT submission, alerts and notifications
+for pending tasks and new submissions, and a map-based destination viewer
+providing a spatial overview of tourist distribution across the city. These
+feature preferences are directly reflected in BYANAGA's Tourism Officer
+panel design, where the analytics dashboard, report generation module,
+event management tools, and notification system collectively address
+each of the capabilities identified by the officer as operationally
+necessary. The alignment between the officer's expressed needs and the
+platform's implemented features confirms that BYANAGA's design is grounded
+in the documented operational realities of the Naga City DMO rather than
+assumed requirements.
+
+% ============================================================
+% QUESTION 9
+% ============================================================
+
+\paragraph{Decisions That Would Benefit from AI-Generated Insights}
+
+When asked which governance decisions would benefit from AI-generated
+insights or recommendations, the Tourism Officer identified several
+high-value applications. Predicting visitor trends based on historical
+arrival and activity data would enable proactive resource planning for
+anticipated peak periods. Identifying high-activity destinations would
+support targeted infrastructure investment and promotional prioritization.
+AI-powered recommendations for destinations to feature in promotional
+campaigns would improve the strategic targeting of the DMO's marketing
+efforts. Detecting low tourist activity at specific destinations or
+during particular periods would allow the officer to initiate responsive
+promotional interventions before inactivity becomes entrenched. Suggesting
+optimal event planning periods based on historical visitor patterns would
+improve event attendance and reduce scheduling conflicts with peak tourism
+windows. Identifying possible overcrowding risks at popular destinations
+would enable the officer to implement crowd management measures in advance
+rather than reactively. These AI feature preferences confirm the Tourism
+Officer's openness to data-driven governance tools and validate the
+AI analytics direction identified as a future development priority in
+BYANAGA's scope and delimitation. The current platform implementation
+provides the foundational data collection and aggregation infrastructure
+from which AI-powered features can be developed in subsequent iterations.
+
+% ============================================================
+% QUESTION 10
+% ============================================================
+
+\paragraph{Reports the System Should Automatically Generate}
+
+The Tourism Officer specified a comprehensive list of reports that an
+automated tourism management system should be capable of generating.
+These include monthly visitor reports aggregating total arrivals, origins,
+and visit patterns for the reporting period; annual tourism summary reports
+providing a full-year overview of tourism performance for policy planning
+and DOT submission; destination performance reports documenting visitor
+volumes and activity levels at individual tourist sites and registered
+establishments; event attendance reports capturing participation figures
+for tourism events within the city; establishment reports summarizing the
+operational status, voucher activity, and compliance levels of registered
+businesses; tourist feedback reports aggregating satisfaction ratings and
+review content from platform users; peak season reports identifying the
+months and periods of highest tourist activity; low-activity destination
+reports flagging sites with consistently below-average visitor volumes;
+and tourism KPI reports measuring performance against the targets set
+by the DMO and the city government for tourism development objectives.
+The specificity and breadth of the Tourism Officer's reporting requirements
+confirm that BYANAGA's report generation module --- which supports
+multiple report types with date range and category filters and exports
+in PDF and CSV formats --- must be designed to accommodate a diverse
+range of reporting needs within a single flexible interface. These
+requirements also establish the data model requirements that informed
+the BYANAGA database architecture, ensuring that the Visitor Record,
+Establishment, Voucher, Redemption, Event, and Review entities store
+the attributes necessary to populate each of the report types identified
+by the officer.
+
+% ============================================================
+% SUMMARY
+% ============================================================
+
+\paragraph{Summary of Tourism Officer Interview Findings}
+
+Semi-Structured Interview with Tourism Officer of the Naga City DMO
+yielded seven main findings that provided valuable information on the design
+of BYANAGA application. First, tourism information in Naga City is gathered
+through fragmented sources, such as walk-in logs, hotel information, Google
+Forms, spreadsheets, and paper log books without any mechanism for aggregation.
+Second, the tourism officer handles various types of records related to tourists,
+travel destinations, tourism events, establishments, permits, and monthly DOT
+reports, which are manually done or semi-digitized. Third, due to the absence
+of a special software for handling tourism information, report writing takes
+one week or even longer due to manual gathering of information, follow up
+with delinquent establishments, and aggregating information using spreadsheets.
+Fourth, the greatest challenges are incomplete information from partner establishments,
+late submission of reports, and time spent on manual aggregation of information.
+Fifth, the officer needed access to multidimensional performance data related to
+the number of visitors, level of activity of the destinations, number of attendees,
+compliance on the part of establishments, and visitor feedback, which could not be
+accessed through one single source at present. Sixth, the real-time monitoring of
+the visitors, updates of the establishments, and the maintenance of event calendars
+were all dependent upon the lack of the integration of an online platform between
+the DMO and the private tourism sector. Seventh, the officer had specific needs
+for dashboard features, automated reports, and artificial intelligence-related data
+analysis that were directly linked to the existing and planned capabilities of BYANAGA.
+Thus, it was shown that the Tourism Officer interface offered by BYANAGA, which
+included the validation queue, voucher systems, visitor data encoders, event
+management, and automated report generation, met the needs of the Naga City DMO
+based on the input from the primary user.
+
+\section{Problem 2: Design and Development of BYANAGA}
+
+This section presents the proposed design and development of the BYANAGA Smart 
+Tourism Destination Management Platform based on the requirements identified in 
+Problem 1. The system design is documented through five artifacts: the System Workflow Process, 
+Data Flow Diagram (DFD), Use Case Diagram (UCD), Business Process Modeling Notation (BPMN) diagrams, 
+Entity-Relationship Diagram (ERD), and the role-differentiated interface designs 
+for the Tourist, Establishment Owner, Tourism Officer, and Administrator. These 
+artifacts are presented in the System Design and Architecture section that follows.
+
+\subsection{Software Development Process}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/SDP.png}
+    \caption{Software Development Process of BYANAGA}
+    \label{fig:sfd}
+\end{figure}
+
+Plan — The System Analyst defines requirements gathered from surveys and interviews with tourists, establishment owners, and tourism officers across Naga City.
+Design — The UI/UX Designer creates prototypes for the three interfaces: Tourist (voucher discovery, listings), Establishment Owner (profile, voucher management), and Tourism Officer (validation queue, event management).
+Develop — The Lead Programmer builds BYANAGA based on the approved prototype, implementing all three interface modules.
+Test — QA and primary users (tourists, establishment owners, and the tourism officer) test the system output — validating features like voucher redemption, registration queues, and visitor data encoding.
+Deploy — The team deploys BYANAGA to Naga City stakeholders.
+Review — The team evaluates system capabilities and collects feedback, which then drives the next sprint cycle. 
+
+\subsubsection{Data Flow Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/DFDL0.png}
+    \caption{Level 0 Data Flow Diagram of BYANAGA}
+    \label{fig:dfd0}
+\end{figure}
+
+Figure~\ref{fig:dfd0} presents the Data Flow Diagram Level 0 of BYANAGA,
+showing the system as a single central process and illustrating how data flows
+between the system and its four external entities: Tourist, Establishment
+Owner, Tourism Officer, and Administrator.
+
+\textbf{Tourist.}
+The Tourist sends three inputs into the system: Registration Data when
+creating a new account, Voucher Claim Request when selecting a voucher from
+the marketplace, and Rating and Review after redeeming a voucher at an
+establishment. In return, the system sends back three outputs to the Tourist:
+Account Confirmed as verification that registration was successful, Voucher
+Confirmed as acknowledgment that a voucher was successfully claimed, and
+Destination Info containing tourism destination details and travel tips
+available on the platform.
+
+\textbf{Establishment Owner.}
+The Establishment Owner sends three inputs into the system: Business Details
+containing the establishment profile and contact information, Supporting
+Documents required for registration validation, and Voucher Details containing
+the promotional voucher information submitted for officer review. The system
+returns three outputs to the Establishment Owner: Approval Status notifying
+the owner of the result of their registration review, Voucher Feedback
+containing revision notes from the Tourism Officer when a submitted voucher
+requires corrections, and Performance Summary providing the owner with
+redemption counts and foot traffic analytics from their dashboard.
+
+\textbf{Tourism Officer.}
+The Tourism Officer sends three inputs into the system: Voucher Review
+Decision indicating whether a submitted voucher is approved or requires
+revision, Destination Data containing tourist destination information being
+added or updated on the platform, and Report Request when generating a tourism
+report. The system returns two outputs to the Tourism Officer: Voucher
+Submission representing the pending voucher submissions from establishment
+owners that the officer must review, and Generated Report which is the
+completed tourism report produced from the system's data in the requested
+format.
+
+\textbf{Administrator.}
+The Administrator sends three inputs into the system: Approve or Reject
+Establishment representing the validation decision on pending establishment
+registration submissions, Officer Account Data when creating a new Tourism
+Officer account, and Report Request when requesting system-wide analytics
+reports. The system returns four outputs to the Administrator: Pending
+Registrations showing the list of establishment registration applications
+awaiting review, Voucher Analytics providing system-wide data on voucher
+performance across all establishments, and Generated Report containing the
+compiled analytics report requested by the Administrator.
+
+Overall, the diagram demonstrates that the BYANAGA system serves as the
+central processing hub connecting all four external entities through structured
+and role-specific data exchanges. Each entity interacts with the system only
+through data flows that correspond to their assigned role, ensuring that
+tourists access promotional and destination content, establishment owners
+manage their profiles and vouchers, the Tourism Officer governs content
+approval and reporting, and the Administrator oversees user management and
+system-wide analytics. The Level 0 diagram confirms that all interactions pass
+through the centralized system, establishing BYANAGA as a single integrated
+platform for Naga City tourism management.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/DFDL1.png}
+    \caption{Level 1 Data Flow Diagram of BYANAGA}
+    \label{fig:dfd_level1}
+\end{figure}
+
+Data Flow Diagram Level 1 of BYANAGA extends the system through nine interrelated processes depicting how data flows between four entities external to the organization – Tourist, Establishment Owner, Tourism Officer, and Administrator – and seven data stores.
+Process 1 entails registration of tourists and account storage in DS1 (Users). Process 2 deals with validation of establishments by the Administrator, where the results are saved in DS2 (Establishments). Process 3 enables authorized owners to make modifications on establishment details kept in DS2. Process 4 involves generation of vouchers by owners, which are recorded in DS3 (Vouchers). Process 5 deals with review of vouchers by Tourism Officers, with feedback provided to the owner. Process 6 involves recording of tourist vouchers and their redemption into DS4 (Voucher Claims). Process 7 deals with storing of tourist reviews and ratings in DS5 (Reviews). Process 8 involves management of destination record in DS6 (Destinations) by Tourism Officers. Process 9 deals with report generation involving collection of data from all data stores and saving the report in DS7 (Reports and Audit Trail).
+
+\subsubsection{Use Case Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/UCD.png}
+    \caption{Use Case Diagram of BYANAGA}
+    \label{fig:use_case}
+\end{figure}
+
+According to the BYANAGA Use Case Diagram, there are four external actors involved in the process, including Tourist, Establishment Owner (Est. Owner), Tourism Officer, and Admin. These external actors have been associated with the functions that the system authorizes them to do.
+The Tourist participates in six use cases. In order to get a personal account, he/she should Register Account. He/She is allowed to Browse Marketplace in order to check out all the vouchers and offers available, which also includes Claim Voucher through an include relationship. This implies that browsing comes before claiming a voucher since this is a compulsory function. The Claim Voucher also involves the function of Redeem Voucher, and thus the tourist should first redeem before he/she rates and reviews the establishment. The tourist may directly go for the activity of View Destination.
+Establishment Owner has use case interaction with four other use cases. Establishment Owner has an ability to use Add or Update Destination use case to add information about the destination. Establishment Owner is able to use Generate Voucher to submit voucher creation request to an officer for approval. Establishment Owner can use Edit or Cancel Voucher use case in order to modify or cancel voucher submission prior to its examination by an officer. Moreover, Establishment Owner can track his performance by using View Own Performance use case.
+Tourism Officer has use case interaction with four other use cases. Tourism Officer has an ability to use Review Voucher use case in order to examine voucher submission and make a decision about it either approving or sending back along with written revision recommendations. Tourism Officer uses Add or Update Destination use case with Establishment Owner. Tourism Officer is able to use Flag Review use case in order to escalate tourist review to the Administrator for further examination. Finally, Tourism Officer can generate reports in the form of PDF or CSV files.
+The Administrator participates in five use cases. The Administrator may create an Officer Account by registering and assigning Tourism Officer users into the system. The Administrator can either approve or reject requests made by establishment owners who want to access the platform. The Administrator may remove Tourist Review for any reviews that are not in compliance with platform policies, as identified by the officer. The Administrator may manage Voucher Analysis to manage all voucher data analytics in the system. The Administrator may Manage Users, thereby creating, editing, suspending, or deactivating any account in the system.
+The above diagram shows the system boundary for the BYANAGA system, what activities each actor must participate in, and the dependency between the different processes – especially the include dependency chain that starts from Browse Marketplace through Claim Voucher, Redeem Voucher, and eventually Rate Establishment.
+
+\subsubsection{Business Process Modeling Notation (BPMN)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/BPMN.png}
+    \caption{Business Process Modeling Notation}
+    \label{fig:bpmn}
+\end{figure}
+
+The BPMN Diagram of BYANAGA presents the workflows from end to end of five roles: Tourist, Establishment Owner, Tourism Officer, Administrator, and the System through swimlanes, defining the responsibility of each role and how actions occur among these roles.
+The swimlane of Tourist contains three processes, namely registration, voucher collection and redemption followed by rating of establishment, and exploration of tourist destinations. On the other hand, the swimlane of Establishment Owner contains processes such as registration of account with documents attached, establishment profile maintenance, and voucher creation involving modification and resubmission process. Furthermore, the Tourism Officer contains processes such as vouchers' review and approval, management of tourist destinations, and generation of report in PDF and CSV format. The Administrator involves in processes that include verification of the validity of establishments' registration, activation of account, and voucher dashboard management. Meanwhile, the System lane involves automation of actions such as notification, validation of voucher's field values, increment in claim number, documentation of redemptions, publication of destination, and log of audit trail.
+Thus, through the diagram, it can be seen how the operation of BYANAGA is structured with the help of approval mechanism and automation process.
+
+\subsubsection{Entity-Relationship Diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/ERD.png}
+    \caption{Entity-Relationship Diagram of BYANAGA (Crow's Foot Notation)}
+    \label{fig:erd}
+\end{figure}
+
+The Entity Relationship Diagram of BYANAGA describes the relational database through eleven core entities: Administrator, Tourism Officer, Establishment Owner, Establishment, Tourist Destination, Voucher, Tourist, Voucher Claim, Review, Notification, and Audit Trail.
+The role of Administrators is to set up officer accounts and validate establishment entries. Tourism Officers are responsible for management of tourist destinations and review of vouchers. An Establishment Owner is associated with one or more Establishments, holding their names, categories, locations, permit number, validation status, and uploaded documents. Vouchers are tied to Establishments with discount information, expiration dates, number of claims possible, statuses, and officer remarks. Tourists claim their vouchers via the Voucher Claim, indicating the voucher's redemption and the timestamp. Reviews keep record of rating, message, and keywords left by tourists post-redeeming vouchers. Locations of Tourist Destinations contain the geographical information, coordinates, working hours, and travel tips managed by Officers. Notifications capture system messages sent out for particular users and roles. Audit Trail records all activities performed within the system along with its actor, action, target, and timestamp.
+The ERD thus establishes the relational framework on which the proposed system functions.
+
+\subsection{System Interface}
+
+This section presents the screenshots of the developed BYANAGA platform,
+showing the implemented interfaces for each of the four user roles: Tourist,
+Establishment Owner, Tourism Officer, and Administrator. The screenshots
+demonstrate how the system design artifacts presented in the preceding
+subsections were translated into functional web-based interfaces.
+
+3.1.2 Tourist Interface — Landing page, registration, voucher marketplace, my vouchers, establishment browsing, redemption, review submission
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{SSs//Tourist/1 (1).png}
+    \caption{Tourist Interface - Landing Page}
+    \label{fig:tourist-landing}
+\end{figure}
+
+3.1.3 Establishment Owner Interface — Registration, dashboard, voucher creation, redemption panel, performance analytics
+3.1.4 Tourism Officer Interface — Dashboard, validation queue, voucher review panel, events manager, report generation
+3.1.5 Administrator Interface — System overview, user accounts, establishment approval, voucher analytics, audit trail
+
+\clearpage
+
+%-----------------------------
+% References
+%-----------------------------
+
+\clearpage
+
+\printbibliography
+
+\clearpage
+
+\end{document}
